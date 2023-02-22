@@ -15,7 +15,7 @@ export const StyledNavBar = styled.nav`
   }
 
   .logo {
-    height: 54px;
+    height: 60px;
 
     border-radius: 10px;
     

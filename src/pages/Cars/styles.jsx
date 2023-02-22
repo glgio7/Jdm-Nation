@@ -8,7 +8,7 @@ export const MainContainer = styled.main`
   }
 
   .select__box {
-    margin-top: 96px;
+    margin-top: 1rem;
 
     display: flex;
     justify-content: space-evenly;
@@ -62,7 +62,7 @@ export const MainContainer = styled.main`
     justify-content: center;
     flex-flow: row wrap;
 
-    min-height: 100vh;
+    min-height: calc(100vh - 202px);
   }
 
   .card__item {
