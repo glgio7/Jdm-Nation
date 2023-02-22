@@ -1,0 +1,125 @@
+{
+  "y2000": [
+    {
+      "id": "001",
+      "name": "Subaru Impreza WRX",
+      "image_path": "/img/2000s/subaru-impreza-wrx.jpg"
+    },
+    {
+      "id": "002",
+      "name": "Mitsubishi Lancer Evo X",
+      "image_path": "/img/2000s/lancer-evo10.jpg"
+    }
+  ],
+  "y90": [
+    {
+      "id": "004",
+      "name": "Mazda Miata",
+      "image_path": "/img/90s/mazda-miata.jpg"
+    },
+    {
+      "id": "005",
+      "name": "Nissan R32",
+      "image_path": "/img/90s/r32.jpg"
+    },
+    {
+      "id": "006",
+      "name": "Toyota Supra MK4",
+      "image_path": "/img/90s/supra-mk4.jpg"
+    },
+    {
+      "id": "007",
+      "name": "Nissan Silvia S14",
+      "image_path": "/img/90s/silvia-s14.jpg"
+    }
+  ],
+  "y80": [
+    {
+      "id": "003",
+      "name": "Toyota AE86",
+      "image_path": "/img/80s/ae86.jpg"
+    },
+    {
+      "id": "234",
+      "name": "Honda CRX",
+      "image_path": "/img/80s/honda-crx-80s.jpg"
+    },
+    {
+      "id": "543",
+      "name": "Mazda RX-7",
+      "image_path": "/img/80s/mazda-rx7-80s.jpg"
+    },
+    {
+      "id": "275",
+      "name": "Mitsubishi Starion",
+      "image_path": "/img/80s/mitsubishi-starion-80s.jpg"
+    },
+    {
+      "id": "571",
+      "name": "Nissan 300ZX",
+      "image_path": "/img/80s/nissan-300zx-80s.jpg"
+    },
+    {
+      "id": "036",
+      "name": "Toyota Supra MK3",
+      "image_path": "/img/80s/supra-mk3.jpg"
+    },
+    {
+      "id": "873",
+      "name": "Toyota MR-2",
+      "image_path": "/img/80s/toyota-mr2-80s.jpg"
+    }
+  ],
+  "y70": [
+    {
+      "id": "009",
+      "name": "Nissan Gloria",
+      "image_path": "/img/70s/nissan-gloria.jpg"
+    },
+    {
+      "id": "010",
+      "name": "Toyota 2000GT",
+      "image_path": "/img/70s/toyota-2000gt-70s.jpg"
+    },
+    {
+      "id": "011",
+      "name": "Mazda RX-7",
+      "image_path": "/img/70s/mazda-rx7-70s.jpg"
+    },
+    {
+      "id": "012",
+      "name": "Nissan Datsun",
+      "image_path": "/img/70s/nissan-datsun.jpg"
+    },
+    {
+      "id": "013",
+      "name": "Mazda Cosmo",
+      "image_path": "/img/70s/mazda-cosmo-70s.jpg"
+    },
+    {
+      "id": "014",
+      "name": "Nissan Cedric",
+      "image_path": "/img/70s/nissan-cedric.jpg"
+    },
+    {
+      "id": "015",
+      "name": "Toyota Celica GTV",
+      "image_path": "/img/70s/celica-gtv.jpg"
+    },
+    {
+      "id": "016",
+      "name": "Honda Civic",
+      "image_path": "/img/70s/1gen-honda-civic.jpg"
+    },
+    {
+      "id": "017",
+      "name": "Skyline GTR",
+      "image_path": "/img/70s/skyline-gtr-70s.jpg"
+    },
+    {
+      "id": "018",
+      "name": "Honda Prelude",
+      "image_path": "/img/70s/honda-prelude-70s.jpg"
+    }
+  ]
+}
