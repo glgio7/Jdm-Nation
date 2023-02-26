@@ -1,14 +1,60 @@
 {
   "y2000": [
     {
-      "id": "001",
-      "name": "Subaru Impreza WRX",
+      "id": "2007",
+      "name": "Subaru Impreza WRX STI",
+      "power": "308 cv",
+      "velMax": "255 km/h",
+      "t0to100": "5 segundos",
       "image_path": "/img/2000s/subaru-impreza-wrx.jpg"
     },
     {
-      "id": "002",
+      "id": "2000",
+      "name": "Nissan GT-R",
+      "power": "570 cv",
+      "velMax": "315 km/h",
+      "t0to100": "2.7 segundos",
+      "image_path": ""
+    },
+    {
+      "id": "2001",
+      "name": "Toyota Supra",
+      "power": "340 cv",
+      "velMax": "250 km/h",
+      "t0to100": "4.1 segundos",
+      "image_path": ""
+    },
+    {
+      "id": "2002",
+      "name": "Honda NSX",
+      "power": "581 cv",
+      "velMax": "307 km/h",
+      "t0to100": "2.9 segundos",
+      "image_path": ""
+    },
+    {
+      "id": "2003",
+      "name": "Lexus LFA",
+      "power": "560 cv",
+      "velMax": "325 km/h",
+      "t0to100": "3.7 segundos",
+      "image_path": ""
+    },
+    {
+      "id": "2004",
+      "name": "Mazda RX-8",
+      "power": "231 cv",
+      "velMax": "230 km/h",
+      "t0to100": "6.4 segundos",
+      "image_path": ""
+    },
+    {
+      "id": "2006",
       "name": "Mitsubishi Lancer Evo X",
-      "image_path": "/img/2000s/lancer-evo10.jpg"
+      "image_path": "/img/2000s/lancer-evo10.jpg",
+      "power": "295 cv",
+      "velMax": "241 km/h",
+      "t0to100": "5.2 segundos"
     }
   ],
   "y90": [
@@ -18,7 +64,7 @@
       "image_path": "/img/90s/supra-mk4.jpg",
       "power": "326 cv",
       "velMax": "250 km/h",
-      "t0to100": "4,6 segundos"
+      "t0to100": "4.6 segundos"
     },
     {
       "id": "911",
@@ -26,7 +72,7 @@
       "image_path": "/img/90s/mazda-rx7fd.jpg",
       "power": "280 cv",
       "velMax": "250 km/h",
-      "t0to100": "5,4 segundos"
+      "t0to100": "5.4 segundos"
     },
     {
       "id": "909",
@@ -34,7 +80,7 @@
       "image_path": "/img/90s/acura-nsx.jpg",
       "power": "290 cv",
       "velMax": "270 km/h",
-      "t0to100": "5,7 segundos"
+      "t0to100": "5.7 segundos"
     },
     {
       "id": "908",
@@ -42,7 +88,7 @@
       "name": "Nissan Skyline GT-R R32",
       "power": "280 cv",
       "velMax": "250 km/h",
-      "t0to100": "4,8 segundos"
+      "t0to100": "4.8 segundos"
     },
     {
       "id": "901",
@@ -50,7 +96,7 @@
       "image_path": "/img/90s/lancer-evo4.jpg",
       "power": "280 cv",
       "velMax": "250 km/h",
-      "t0to100": "4,8 segundos"
+      "t0to100": "4.8 segundos"
     },
     {
       "id": "906",
@@ -58,7 +104,7 @@
       "image_path": "/img/90s/subaru-impreza-gc8.jpg.jpg",
       "power": "280 cv",
       "velMax": "240 km/h",
-      "t0to100": "5,4 segundos"
+      "t0to100": "5.4 segundos"
     },
     {
       "id": "903",
@@ -66,7 +112,7 @@
       "image_path": "/img/90s/nsx-type-r-na1.jpg",
       "power": "280 cv",
       "velMax": "280 km/h",
-      "t0to100": "5,2 segundos"
+      "t0to100": "5.2 segundos"
     },
     {
       "id": "904",
@@ -74,7 +120,7 @@
       "image_path": "/img/90s/nissan-300zx-z32.jpg",
       "power": "300 cv",
       "velMax": "250 km/h",
-      "t0to100": "5,6 segundos"
+      "t0to100": "5.6 segundos"
     },
     {
       "id": "902",
@@ -82,7 +128,7 @@
       "image_path": "/img/90s/toyota-mr2-sw20.jpg",
       "power": "245 cv",
       "velMax": "245 km/h",
-      "t0to100": "5,6 segundos"
+      "t0to100": "5.6 segundos"
     },
     {
       "id": "905",
@@ -90,7 +136,7 @@
       "image_path": "/img/90s/honda-integra-type-r.jpg",
       "power": "200 cv",
       "velMax": "235 km/h",
-      "t0to100": "6,7 segundos"
+      "t0to100": "6.7 segundos"
     },
     {
       "id": "907",
@@ -98,46 +144,116 @@
       "image_path": "/img/90s/silvia-s14.jpg",
       "power": "200 cv",
       "velMax": "235 km/h",
-      "t0to100": "7,3 segundos"
+      "t0to100": "7.3 segundos"
     }
   ],
   "y80": [
     {
-      "id": "003",
-      "name": "Toyota AE86",
-      "image_path": "/img/80s/ae86.jpg"
-    },
-    {
-      "id": "234",
-      "name": "Honda CRX",
-      "image_path": "/img/80s/honda-crx-80s.jpg"
-    },
-    {
-      "id": "543",
-      "name": "Mazda RX-7",
-      "image_path": "/img/80s/mazda-rx7-80s.jpg"
-    },
-    {
-      "id": "275",
-      "name": "Mitsubishi Starion",
-      "image_path": "/img/80s/mitsubishi-starion-80s.jpg"
-    },
-    {
-      "id": "571",
-      "name": "Nissan 300ZX",
-      "image_path": "/img/80s/nissan-300zx-80s.jpg"
-    },
-    {
-      "id": "036",
-      "name": "Toyota Supra MK3",
+      "id": "801",
+      "name": "Toyota Supra Mk3",
+      "power": "235 cv",
+      "velMax": "250 km/h",
+      "t0to100": "6.0 segundos",
       "image_path": "/img/80s/supra-mk3.jpg"
     },
     {
-      "id": "873",
+      "id": "802",
+      "name": "Mazda RX-7 FC",
+      "power": "200 cv",
+      "velMax": "240 km/h",
+      "t0to100": "7.0 segundos",
+      "image_path": "/img/80s/mazda-rx7-80s.jpg"
+    },
+    {
+      "id": "803",
+      "name": "Nissan Skyline R31",
+      "power": "205 cv",
+      "velMax": "220 km/h",
+      "t0to100": "8.0 segundos",
+      "image_path": "/img/80s/nissan-r31.jpg"
+    },
+    {
+      "id": "804",
+      "name": "Honda CR-X",
+      "power": "160 cv",
+      "velMax": "200 km/h",
+      "t0to100": "7.5 segundos",
+      "image_path": "/img/80s/honda-crx-80s.jpg"
+    },
+    {
+      "id": "805",
+      "name": "Mitsubishi Starion",
+      "power": "170 cv",
+      "velMax": "215 km/h",
+      "t0to100": "7.0 segundos",
+      "image_path": "/img/80s/mitsubishi-starion-80s.jpg"
+    },
+    {
+      "id": "806",
+      "name": "Subaru XT",
+      "power": "138 cv",
+      "velMax": "210 km/h",
+      "t0to100": "9.6 segundos",
+      "image_path": "/img/80s/subaru-xt.jpg"
+    },
+    {
+      "id": "807",
+      "name": "Isuzu Piazza",
+      "power": "180 cv",
+      "velMax": "210 km/h",
+      "t0to100": "7.8 segundos",
+      "image_path": "/img/80s/isuzu-piazza.jpg"
+    },
+    {
+      "id": "808",
+      "name": "Suzuki Alto Works",
+      "power": "64 cv",
+      "velMax": "140 km/h",
+      "t0to100": "9.2 segundos",
+      "image_path": "/img/80s/suzuki-alto-works.jpg"
+    },
+    {
+      "id": "809",
+      "name": "Daihatsu Charade GTti",
+      "power": "101 cv",
+      "velMax": "180 km/h",
+      "t0to100": "8.3 segundos",
+      "image_path": "/img/80s/daihatsu.jpg"
+    },
+    {
+      "id": "810",
+      "name": "Subaru Leone RX",
+      "power": "130 cv",
+      "velMax": "200 km/h",
+      "t0to100": "8.7 segundos",
+      "image_path": "/img/80s/subaru-leone-rx.jpg"
+    },
+    {
+      "id": "811",
       "name": "Toyota MR-2",
+      "power": "145cv",
+      "velMax": "210 km/h",
+      "t0to100": "8,5 segundos",
       "image_path": "/img/80s/toyota-mr2-80s.jpg"
-    }
+  },
+  {
+      "id": "812",
+      "name": "Nissan 300ZX",
+      "power": "230cv",
+      "velMax": "250 km/h",
+      "t0to100": "7,0 segundos",
+      "image_path": "/img/80s/nissan-300zx-80s.jpg"
+  },
+  {
+      "id": "813",
+      "name": "Toyota AE86",
+      "power": "128cv",
+      "velMax": "201 km/h",
+      "t0to100": "8,6 segundos",
+      "image_path": "/img/80s/ae86.jpg"
+  }
   ],
+
   "y70": [
     {
       "id": "009",
