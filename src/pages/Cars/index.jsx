@@ -3,9 +3,8 @@ import { MainContainer } from "./styles";
 import carList from "../../api/cars.json";
 
 function CarsPage() {
-  const [ano, setAno] = useState("2000+");
-  const [imageExpanded, setImageExpanded] = useState("");
-  const [carName, setCarName] = useState("");
+  const [ano, setAno] = useState("90");
+  const [itemDetailed, setItemDetailed] = useState([]);
 
   const listaAno =
     ano === "2000+"
@@ -16,15 +15,20 @@ function CarsPage() {
       ? carList.y80
       : carList.y70;
 
+  const showDetails = (id) => {
+    const item = listaAno.find((value) => value.id == id);
+    setItemDetailed(item);
+  };
+
   return (
     <MainContainer>
       <div className="select__box">
         <span>Filtrar por ano</span>
         <select onChange={(e) => setAno(e.target.value)}>
-          <option value={"2000+"}>Anos 2000</option>
           <option value={"90"}>Anos 90</option>
           <option value={"80"}>Anos 80</option>
           <option value={"70"}>Anos 70</option>
+          <option value={"2000+"}>Anos 2000</option>
         </select>
       </div>
       <div className="container">
@@ -34,10 +38,7 @@ function CarsPage() {
             <li
               className="card__item"
               key={item.id}
-              onClick={() => {
-                setImageExpanded(item.image_path);
-                setCarName(item.name);
-              }}
+              onClick={() => showDetails(item.id)}
             >
               <img src={item.image_path} className="card__image" alt="" />
               <span>{item.name}</span>
@@ -45,16 +46,26 @@ function CarsPage() {
           ))}
         </ul>
       </div>
-      <div
-        className={
-          imageExpanded !== ""
-            ? "image__visualizer active"
-            : "image__visualizer"
-        }
-        onClick={() => setImageExpanded("")}
-      >
-        <img src={imageExpanded} alt="" />
-        <span>{carName}</span>
+      <div className={itemDetailed.id ? "info-visualizer active" : "info-visualizer"}>
+        <button className="info-visualizer__close" onClick={() => setItemDetailed([])}>Fechar</button>
+        <img src={itemDetailed.image_path} alt="" />
+        <ul className="info-visualizer__details">
+          <li>
+            <h2>{itemDetailed.name}</h2>
+          </li>
+          <li>
+            <h3>Potência</h3>
+            <span>{itemDetailed.power}</span>
+          </li>
+          <li>
+            <h3>Velocidade Máxima</h3>
+            <span>{itemDetailed.velMax}</span>
+          </li>
+          <li>
+            <h3>0 a 100km/h</h3>
+            <span>{itemDetailed.t0to100}</span>
+          </li>
+        </ul>
       </div>
     </MainContainer>
   );

@@ -13,24 +13,92 @@
   ],
   "y90": [
     {
-      "id": "004",
-      "name": "Mazda Miata",
-      "image_path": "/img/90s/mazda-miata.jpg"
-    },
-    {
-      "id": "005",
-      "name": "Nissan R32",
-      "image_path": "/img/90s/r32.jpg"
-    },
-    {
-      "id": "006",
+      "id": "910",
       "name": "Toyota Supra MK4",
-      "image_path": "/img/90s/supra-mk4.jpg"
+      "image_path": "/img/90s/supra-mk4.jpg",
+      "power": "326 cv",
+      "velMax": "250 km/h",
+      "t0to100": "4,6 segundos"
     },
     {
-      "id": "007",
+      "id": "911",
+      "name": "Mazda RX-7 FD",
+      "image_path": "/img/90s/mazda-rx7fd.jpg",
+      "power": "280 cv",
+      "velMax": "250 km/h",
+      "t0to100": "5,4 segundos"
+    },
+    {
+      "id": "909",
+      "name": "Acura NSX",
+      "image_path": "/img/90s/acura-nsx.jpg",
+      "power": "290 cv",
+      "velMax": "270 km/h",
+      "t0to100": "5,7 segundos"
+    },
+    {
+      "id": "908",
+      "image_path": "/img/90s/r32.jpg",
+      "name": "Nissan Skyline GT-R R32",
+      "power": "280 cv",
+      "velMax": "250 km/h",
+      "t0to100": "4,8 segundos"
+    },
+    {
+      "id": "901",
+      "name": "Mitsubishi Lancer Evolution IV",
+      "image_path": "/img/90s/lancer-evo4.jpg",
+      "power": "280 cv",
+      "velMax": "250 km/h",
+      "t0to100": "4,8 segundos"
+    },
+    {
+      "id": "906",
+      "name": "Subaru Impreza WRX STI (GC8)",
+      "image_path": "/img/90s/subaru-impreza-gc8.jpg.jpg",
+      "power": "280 cv",
+      "velMax": "240 km/h",
+      "t0to100": "5,4 segundos"
+    },
+    {
+      "id": "903",
+      "name": "Honda NSX Type R (NA1)",
+      "image_path": "/img/90s/nsx-type-r-na1.jpg",
+      "power": "280 cv",
+      "velMax": "280 km/h",
+      "t0to100": "5,2 segundos"
+    },
+    {
+      "id": "904",
+      "name": "Nissan 300ZX Twin Turbo (Z32)",
+      "image_path": "/img/90s/nissan-300zx-z32.jpg",
+      "power": "300 cv",
+      "velMax": "250 km/h",
+      "t0to100": "5,6 segundos"
+    },
+    {
+      "id": "902",
+      "name": "Toyota MR2 Turbo (SW20)",
+      "image_path": "/img/90s/toyota-mr2-sw20.jpg",
+      "power": "245 cv",
+      "velMax": "245 km/h",
+      "t0to100": "5,6 segundos"
+    },
+    {
+      "id": "905",
+      "name": "Honda Integra Type R (DC2)",
+      "image_path": "/img/90s/honda-integra-type-r.jpg",
+      "power": "200 cv",
+      "velMax": "235 km/h",
+      "t0to100": "6,7 segundos"
+    },
+    {
+      "id": "907",
       "name": "Nissan Silvia S14",
-      "image_path": "/img/90s/silvia-s14.jpg"
+      "image_path": "/img/90s/silvia-s14.jpg",
+      "power": "200 cv",
+      "velMax": "235 km/h",
+      "t0to100": "7,3 segundos"
     }
   ],
   "y80": [

@@ -20,7 +20,7 @@ export const GlobalCSS = createGlobalStyle`
 
 
 #root {
-  text-align: center;
+  max-width: 100vw;
 }
 
 body{
