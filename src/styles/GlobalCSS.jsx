@@ -16,11 +16,7 @@ export const GlobalCSS = createGlobalStyle`
   font-family: "Kdam Thmor Pro", sans-serif;
   font-synthesis: none;
   font-weight: normal;
-}
 
-
-#root {
-  max-width: 100vw;
 }
 
 body{
@@ -28,12 +24,13 @@ body{
 
   position: relative;
   
-  max-width: 100vw;
+  width: 100vw;
   
   overflow-x: hidden;
+
 }
 
 a{
   text-decoration: none;
 }
-`
+`;
