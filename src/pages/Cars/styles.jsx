@@ -1,34 +1,18 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.main`
-	position: relative;
+export const YearSelector = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+	margin-top: 2rem;
+	margin: 0 auto;
 
-	img {
-		width: 100%;
-	}
-
-	.container {
-		display: flex;
-		justify-content: center;
-		flex-flow: row wrap;
-		max-width: 90%;
-
-		margin: 0 auto;
-
-		background-position: center;
-		background-size: contain;
-	}
-
-	.select__box {
-		display: flex;
-		justify-content: space-evenly;
-		margin-top: 2rem;
-
-		width: 30vw;
-	}
-
-	.select__box span {
+	width: 25%;
+	span {
 		width: 45%;
+
+		font-weight: bold;
+
+		color: #000;
 	}
 
 	select {
@@ -43,7 +27,42 @@ export const MainContainer = styled.main`
 		border-radius: 3px;
 	}
 
-	.container h2 {
+	@media screen and (max-width: 768px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		width: 100vw;
+
+		margin-block: 1rem;
+
+		span {
+			margin-block: 0.5rem;
+			text-align: center;
+
+			width: 80%;
+		}
+
+		select {
+			border-radius: 10px;
+			width: 80%;
+			height: 48px;
+		}
+	}
+`;
+
+export const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+	max-width: 90%;
+
+	margin: 0 auto;
+
+	background-position: center;
+	background-size: contain;
+
+	h2 {
 		width: 100%;
 
 		text-align: left;
@@ -62,6 +81,9 @@ export const MainContainer = styled.main`
 		display: flex;
 		justify-content: center;
 		flex-flow: row wrap;
+		padding: 2rem 0;
+		border-radius: 10px;
+		background-color: rgba(50, 50, 50, 0.5);
 
 		min-height: calc(100vh - 202px);
 	}
@@ -77,7 +99,6 @@ export const MainContainer = styled.main`
 
 	.card__image {
 		width: 224px;
-		/* height: 100%; */
 
 		object-fit: cover;
 		object-position: 50%;
@@ -103,6 +124,49 @@ export const MainContainer = styled.main`
 		opacity: 1;
 	}
 
+	@media screen and (max-width: 768px) {
+		max-width: 95%;
+
+		h2 {
+			margin-left: 0;
+			margin-bottom: 0;
+
+			text-align: center;
+		}
+		.card__lista {
+			min-height: initial;
+			/* justify-content: space-around; */
+		}
+
+		.card__item {
+			border-radius: 10px;
+			margin: 0;
+			width: 90%;
+			margin-block: 0.5rem;
+		}
+
+		.card__image {
+			opacity: 1;
+			border-radius: 10px;
+			width: 100%;
+			aspect-ratio: 16/9;
+			clip-path: none;
+		}
+
+		.card__item span {
+			margin-block: 0.25rem;
+			margin-left: 0;
+			max-width: 100%;
+			text-align: center;
+
+			color: #fff;
+		}
+	}
+`;
+
+export const Visualizer = styled.div`
+	text-align: center;
+
 	.info-visualizer {
 		display: flex;
 		position: relative;
@@ -115,6 +179,7 @@ export const MainContainer = styled.main`
 
 		position: fixed;
 		top: 0;
+		left: 0;
 
 		width: 100vw;
 		height: 100vh;
@@ -195,52 +260,9 @@ export const MainContainer = styled.main`
 	}
 
 	@media screen and (max-width: 768px) {
-		.container {
-			max-width: 95%;
-		}
-
-		.select__box {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-
-			width: 100vw;
-
-			margin-top: 1rem;
-		}
-
-		.select__box span {
-			margin-block: 0.5rem;
-
-			width: 80%;
-		}
-
-		select {
-			width: 80%;
-			height: 48px;
-		}
-
-		.container h2 {
-			margin-left: 0;
-			margin-bottom: 0;
-
-			text-align: center;
-		}
-
-		.card__lista {
-			min-height: initial;
-		}
-
-		.card__item {
-			width: 40%;
-		}
-
-		.card__image {
-			width: 100%;
-		}
-
 		.info-visualizer {
 			flex-direction: column;
+
 			padding: 0;
 
 			overflow-y: auto;
@@ -251,12 +273,13 @@ export const MainContainer = styled.main`
 
 			object-fit: cover;
 
-			/* height: 90vh; */
-			max-width: 100vw;
+			max-width: 100%;
 		}
 
 		.info-visualizer__details {
-			width: 100vw;
+			width: 100%;
+
+			padding-bottom: 1rem;
 
 			border-radius: 0 0 10px 10px;
 		}

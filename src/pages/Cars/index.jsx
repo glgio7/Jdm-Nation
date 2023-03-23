@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MainContainer } from "./styles";
+import { YearSelector, Wrapper, Visualizer } from "./styles";
 import carList from "../../api/cars.json";
 
 function Cars() {
@@ -25,17 +25,17 @@ function Cars() {
 		: (document.body.style.overflowY = "auto");
 
 	return (
-		<MainContainer>
-			<div className="container">
-				<div className="select__box">
-					<span>Filtrar por ano</span>
-					<select onChange={(e) => setAno(e.target.value)}>
-						<option value={"90"}>Anos 90</option>
-						<option value={"80"}>Anos 80</option>
-						<option value={"70"}>Anos 70</option>
-						<option value={"2000+"}>Anos 2000</option>
-					</select>
-				</div>
+		<>
+			<YearSelector>
+				<span>Filtrar por ano</span>
+				<select onChange={(e) => setAno(e.target.value)}>
+					<option value={"90"}>Anos 90</option>
+					<option value={"80"}>Anos 80</option>
+					<option value={"70"}>Anos 70</option>
+					<option value={"2000+"}>Anos 2000</option>
+				</select>
+			</YearSelector>
+			<Wrapper>
 				<h2>{`Anos ${ano}`}</h2>
 				<ul className="card__lista">
 					{listaAno.map((item) => (
@@ -49,38 +49,40 @@ function Cars() {
 						</li>
 					))}
 				</ul>
-			</div>
-			<div
-				className={
-					itemDetailed.id ? "info-visualizer active" : "info-visualizer"
-				}
-			>
-				<button
-					className="info-visualizer__close"
-					onClick={() => setItemDetailed([])}
+			</Wrapper>
+			<Visualizer>
+				<div
+					className={
+						itemDetailed.id ? "info-visualizer active" : "info-visualizer"
+					}
 				>
-					Fechar
-				</button>
-				<img src={itemDetailed.image_path} alt="" />
-				<ul className="info-visualizer__details">
-					<li>
-						<h2>{itemDetailed.name}</h2>
-					</li>
-					<li>
-						<h3>Potência</h3>
-						<span>{itemDetailed.power}</span>
-					</li>
-					<li>
-						<h3>Velocidade Máxima</h3>
-						<span>{itemDetailed.velMax}</span>
-					</li>
-					<li>
-						<h3>0 a 100km/h</h3>
-						<span>{itemDetailed.t0to100}</span>
-					</li>
-				</ul>
-			</div>
-		</MainContainer>
+					<button
+						className="info-visualizer__close"
+						onClick={() => setItemDetailed([])}
+					>
+						Fechar
+					</button>
+					<img src={itemDetailed.image_path} alt="" />
+					<ul className="info-visualizer__details">
+						<li>
+							<h2>{itemDetailed.name}</h2>
+						</li>
+						<li>
+							<h3>Potência</h3>
+							<span>{itemDetailed.power}</span>
+						</li>
+						<li>
+							<h3>Velocidade Máxima</h3>
+							<span>{itemDetailed.velMax}</span>
+						</li>
+						<li>
+							<h3>0 a 100km/h</h3>
+							<span>{itemDetailed.t0to100}</span>
+						</li>
+					</ul>
+				</div>
+			</Visualizer>
+		</>
 	);
 }
 

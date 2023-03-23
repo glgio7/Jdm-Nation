@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
-	width: 100vw;
-	height: 96px;
+	width: 100%;
+	height: 48px;
+	padding: 0 1rem;
 
 	background-color: #000;
 
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 
 	z-index: 9;
@@ -18,59 +19,97 @@ export const HeaderContainer = styled.header`
 
 	h1,
 	.home-link {
+		height: 100%;
 		display: flex;
 		align-items: center;
 	}
 
 	.home-link {
-		width: 50%;
-		justify-content: space-around;
 		-webkit-tap-highlight-color: transparent;
 	}
 
 	.logo__image {
-		width: 114px;
-
+		width: 60px;
 		border-radius: 10px;
 	}
 
 	.logo__title {
-		font-size: 3rem;
-		line-height: 3rem;
+		font-size: 1.5rem;
+		line-height: 2rem;
 		color: #fff;
 		position: relative;
-		padding: 0 1rem;
+		z-index: 5;
+		padding: 0rem 0.5rem;
+		margin-left: 0.5rem;
+		transition: all 250ms ease-in-out;
 	}
 
 	.logo__title::before {
 		content: "";
 		position: absolute;
-		bottom: 0;
 		left: 0;
-		width: 100%;
-		height: 0%;
-		background-color: rgba(220, 0, 0, 0.9);
-		z-index: 1;
-		transition: height 200ms ease-out;
-		mix-blend-mode: multiply;
+		bottom: 0;
+		width: 0%;
+		height: 100%;
 		border-radius: 10px;
+		background: #fff;
+		z-index: -1;
+		transition: width 150ms linear;
+	}
+
+	h1:hover .logo__title {
+		color: rgba(120, 0, 0, 1);
 	}
 
 	h1:hover .logo__title::before {
-		height: 100%;
+		width: 100%;
+	}
+
+	button {
+		height: 1.75rem;
+		width: 6rem;
+
+		border: none;
+		border-radius: 10px;
+
+		font-weight: bold;
+		font-size: 1rem;
+		cursor: pointer;
+
+		color: #fff;
+		background-color: rgba(120, 0, 0, 1);
 	}
 
 	@media screen and (max-width: 768px) {
+		height: auto;
+
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+
+		padding: 0.5rem 0;
+
+		h1,
 		.home-link {
 			width: 100%;
+			flex-direction: column;
 		}
 
 		.logo__image {
-			width: 96px;
+			width: 72px;
 		}
 
 		.logo__title {
-			font-size: 2rem;
+			font-size: 1.5rem;
+			margin-left: 0;
+		}
+
+		.logo__title::before {
+			display: none;
+		}
+
+		button {
+			margin-top: 0.5rem;
 		}
 	}
 `;

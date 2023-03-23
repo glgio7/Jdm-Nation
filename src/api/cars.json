@@ -14,7 +14,7 @@
 			"power": "570 cv",
 			"velMax": "315 km/h",
 			"t0to100": "2.7 segundos",
-			"image_path": ""
+			"image_path": "/img/2000s/nissan-gtr-2000s.jpg"
 		},
 		{
 			"id": "2002",
@@ -22,7 +22,7 @@
 			"power": "581 cv",
 			"velMax": "307 km/h",
 			"t0to100": "2.9 segundos",
-			"image_path": ""
+			"image_path": "/img/2000s/honda-nsx-2000s.jpg"
 		},
 		{
 			"id": "2003",
@@ -30,7 +30,7 @@
 			"power": "560 cv",
 			"velMax": "325 km/h",
 			"t0to100": "3.7 segundos",
-			"image_path": ""
+			"image_path": "/img/2000s/lexus-lfa.jpg"
 		},
 		{
 			"id": "2004",
@@ -38,15 +38,15 @@
 			"power": "231 cv",
 			"velMax": "230 km/h",
 			"t0to100": "6.4 segundos",
-			"image_path": ""
+			"image_path": "/img/2000s/mazda-rx8.jpg"
 		},
 		{
 			"id": "2006",
 			"name": "Mitsubishi Lancer Evo X",
-			"image_path": "/img/2000s/lancer-evo10.jpg",
 			"power": "295 cv",
 			"velMax": "241 km/h",
-			"t0to100": "5.2 segundos"
+			"t0to100": "5.2 segundos",
+			"image_path": "/img/2000s/lancer-evo10.jpg"
 		}
 	],
 	"y90": [

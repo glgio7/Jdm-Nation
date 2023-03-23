@@ -4,16 +4,15 @@ import axios from "axios";
 
 const apiKey = import.meta.env.VITE_APP_YOUTUBE_API_KEY;
 
-const playlistIds = [
-	"PLNB3BPJAXTLvE5c4pJmxJRsvK288HKb-y",
-	"RDQMI4j-_L_0Hq4&index=1",
-	"PLrInDaX9lJau1bMYPTruzX16Lkb9qZTu9",
-];
+// "channels": "StateSide Supercars, DutchMotorsport, Eletor, Drift Sight, OutlawPhonk, Checkpoint Japan",
+
+const playlistIds = ["PLOniaSxIscjb2Gm4fAAmFiRMJC32ua21i"];
 const apiUrl =
 	"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&playlistId=";
 
 function Watch() {
 	const [videos, setVideos] = useState([]);
+
 	const [playNow, setPlayNow] = useState({});
 
 	const videosContainer = useRef();
@@ -39,7 +38,7 @@ function Watch() {
 	return (
 		<Container>
 			<VideosContainer ref={videosContainer}>
-				{videos.map((video) => (
+				{videos.reverse().map((video) => (
 					<Video
 						key={video.id}
 						onClick={() => {
@@ -91,5 +90,3 @@ function Watch() {
 }
 
 export default Watch;
-
-//////////////////////////////////////////

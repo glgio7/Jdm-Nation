@@ -1,27 +1,13 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	width: 100%;
-	height: 100%;
+export const Card = styled.div`
+	position: relative;
+	z-index: 5;
 
-	@media screen and (max-width: 768px) {
-		flex-direction: column;
-	}
-`;
-
-export const StyledSection = styled.section`
 	width: 256px;
 	height: 360px;
 
-	background-color: rgba(120, 0, 0, 0.75);
-
-	background-image: url("/img/data/pattern-3.png");
-	background-position: center;
-	background-size: cover;
-
+	background-color: #202020;
 	border-radius: 30px;
 
 	text-align: center;
@@ -31,26 +17,31 @@ export const StyledSection = styled.section`
 	justify-content: space-between;
 	align-items: center;
 
-	.section__title {
-		height: 10%;
-		margin-top: 1rem;
+	.background {
+		background-image: ${({ background }) => `url('${background}')`};
+		background-position: center;
+		background-size: cover;
+		border-radius: 30px;
+		opacity: 0.25;
+
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: -1;
+	}
+
+	h2 {
+		padding: 0.5rem 0;
+		width: 100%;
+		border-radius: 30px 30px 0 0;
+		background-color: rgba(120, 0, 0, 1);
 	}
 
 	.section__description {
 		height: 30%;
 		width: 80%;
-	}
-
-	.section__image {
-		width: 75%;
-
-		aspect-ratio: 16/9;
-
-		object-fit: cover;
-
-		border-radius: 12px;
-
-		margin: 1rem 0;
 	}
 
 	.section__button {
@@ -63,17 +54,16 @@ export const StyledSection = styled.section`
 		font-weight: bold;
 		font-size: 1rem;
 
-		color: #000;
-		background-color: #fff;
+		background-color: #101010;
+		color: #fff;
 
 		transition: all 300ms;
 
 		&:hover {
 			cursor: pointer;
 
-			background-color: #202020;
-
-			color: #fff;
+			background-color: #fff;
+			color: #000;
 		}
 	}
 

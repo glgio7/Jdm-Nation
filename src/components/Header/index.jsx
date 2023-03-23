@@ -15,6 +15,7 @@ export default function Header() {
 					<span className="logo__title">JDM Nation</span>
 				</h1>
 			</Link>
+			<button>Login</button>
 		</HeaderContainer>
 	);
 }

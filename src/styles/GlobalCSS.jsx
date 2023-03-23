@@ -19,12 +19,17 @@ export const GlobalCSS = createGlobalStyle`
 
 }
 
+html, body{
+  width: 100%;
+  height: 100%;
+
+}
+
 body{
   background-color: #101010;
 
   position: relative;
   
-  width: 100vw;
   
   overflow-x: hidden;
 
