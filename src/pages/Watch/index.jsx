@@ -1,4 +1,4 @@
-import { Video, VideosContainer, Container } from "./styles";
+import { Player, Video, VideosContainer, WrapperTitle } from "./styles";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
@@ -14,6 +14,8 @@ function Watch() {
 	const [videos, setVideos] = useState([]);
 
 	const [playNow, setPlayNow] = useState({});
+
+	const [logged, setLogged] = useState(false);
 
 	const videosContainer = useRef();
 
@@ -35,57 +37,118 @@ function Watch() {
 			});
 	}, []);
 
+	const handleWheel = (event) => {
+		const scrollSize = 200;
+		const direction = event.deltaY > 0 ? 1 : -1;
+		videosContainer.current.scrollLeft += direction * scrollSize;
+		document.body.style.overflowY = "hidden";
+	};
+
 	return (
-		<Container>
+		<>
+			<WrapperTitle>Favoritos</WrapperTitle>
 			<VideosContainer ref={videosContainer}>
-				{videos.reverse().map((video) => (
-					<Video
-						key={video.id}
-						onClick={() => {
-							setPlayNow(video);
-							videosContainer.current.scrollTop = 0;
-							videosContainer.current.style.overflowY = "hidden";
-						}}
-					>
-						<div className="action-thumbnail">
-							<img
-								src={video.snippet.thumbnails.medium.url}
-								alt={video.snippet.title}
-							/>
-							<img
-								className="action-thumbnail__play"
-								src="/img/data/play.png"
-								alt="Play"
-							/>
-						</div>
-						<span>
-							{video.snippet.title.length > 40
-								? video.snippet.title.substring(0, 40) + "..."
-								: video.snippet.title}
-						</span>
-					</Video>
-				))}
-				{playNow.snippet && (
-					<div className="player">
-						<button
-							className="player__close"
-							onClick={() => {
-								setPlayNow({});
-								videosContainer.current.style.overflowY = "auto";
-							}}
-						>
-							Fechar
-						</button>
-						<iframe
-							src={`https://www.youtube-nocookie.com/embed/${playNow.snippet.resourceId.videoId}`}
-							title="YouTube Player"
-							frameBorder={0}
-							allowFullScreen
-						></iframe>
+				{logged ? (
+					<div className="wrapper">
+						{videos.reverse().map((video) => (
+							<Video
+								key={video.id}
+								onClick={() => {
+									setPlayNow(video);
+									videosContainer.current.scrollTop = 0;
+									videosContainer.current.style.overflowY = "hidden";
+								}}
+							>
+								<div className="action-thumbnail">
+									<img
+										src={video.snippet.thumbnails.medium.url}
+										alt={video.snippet.title}
+									/>
+									<img
+										className="action-thumbnail__play"
+										src="/img/data/play.png"
+										alt="Play"
+									/>
+								</div>
+								<span>
+									{video.snippet.title.length > 40
+										? video.snippet.title.substring(0, 40) + "..."
+										: video.snippet.title}
+								</span>
+							</Video>
+						))}
+					</div>
+				) : (
+					<div className="wrapper__not-logged">
+						<button>Faça login para adicionar videos aos favoritos</button>
 					</div>
 				)}
 			</VideosContainer>
-		</Container>
+			<WrapperTitle>Favoritos</WrapperTitle>
+			<VideosContainer
+				ref={videosContainer}
+				onWheel={handleWheel}
+				onMouseLeave={() => {
+					document.body.style.overflowY = "auto";
+				}}
+			>
+				<div className="wrapper">
+					{videos.reverse().map((video) => (
+						<Video
+							key={video.id}
+							onClick={() => {
+								setPlayNow(video);
+
+								if (playNow !== {}) document.body.style.overflowY = "hidden";
+							}}
+						>
+							<div className="action-thumbnail">
+								<img
+									src={video.snippet.thumbnails.medium.url}
+									alt={video.snippet.title}
+								/>
+								<img
+									className="action-thumbnail__play"
+									src="/img/data/play.png"
+									alt="Play"
+								/>
+							</div>
+							<span>
+								{video.snippet.title.length > 40
+									? video.snippet.title.substring(0, 40) + "..."
+									: video.snippet.title}
+							</span>
+						</Video>
+					))}
+				</div>
+			</VideosContainer>
+
+			{/* /////// Player below*/}
+
+			{playNow.snippet && (
+				<Player>
+					<button
+						className="player__close"
+						onClick={() => {
+							setPlayNow({});
+							videosContainer.current.style.overflowY = "auto";
+
+							if (playNow) {
+								document.body.style.overflowY = "hidden";
+							}
+						}}
+					>
+						Fechar
+					</button>
+					<iframe
+						src={`https://www.youtube-nocookie.com/embed/${playNow.snippet.resourceId.videoId}`}
+						title="YouTube Player"
+						frameBorder={0}
+						allowFullScreen
+					></iframe>
+				</Player>
+			)}
+		</>
 	);
 }
 

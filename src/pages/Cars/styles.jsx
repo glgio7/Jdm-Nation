@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 export const YearSelector = styled.div`
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	margin-top: 2rem;
 	margin: 0 auto;
 
-	width: 25%;
+	width: 20%;
 	span {
-		width: 45%;
+		width: 62%;
 
 		font-weight: bold;
 
 		color: #000;
+		background-color: #fff;
+		text-align: center;
+		border-radius: 3px 0 0 3px;
 	}
 
 	select {
@@ -20,14 +23,16 @@ export const YearSelector = styled.div`
 
 		border: none;
 
-		width: 45%;
+		width: 38%;
 
 		text-align: center;
 
-		border-radius: 3px;
+		padding-inline: 0.5rem;
+
+		border-radius: 0 3px 3px 0;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -124,7 +129,7 @@ export const Wrapper = styled.div`
 		opacity: 1;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		max-width: 95%;
 
 		h2 {
@@ -259,7 +264,7 @@ export const Visualizer = styled.div`
 		color: #ff0000;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		.info-visualizer {
 			flex-direction: column;
 

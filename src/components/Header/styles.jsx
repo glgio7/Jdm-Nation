@@ -78,9 +78,18 @@ export const HeaderContainer = styled.header`
 
 		color: #fff;
 		background-color: rgba(120, 0, 0, 1);
+
+		transition: all 300ms;
+
+		&:hover {
+			background-color: #f22222;
+		}
+		&:first-child {
+			margin-right: 0.5rem;
+		}
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		height: auto;
 
 		flex-wrap: wrap;
@@ -110,6 +119,13 @@ export const HeaderContainer = styled.header`
 
 		button {
 			margin-top: 0.5rem;
+
+			&:first-child {
+				margin-right: 0.5rem;
+			}
+			&:last-child {
+				margin-left: 0.5rem;
+			}
 		}
 	}
 `;

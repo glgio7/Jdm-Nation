@@ -1,88 +1,68 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-	width: 100%;
-	min-height: calc(100vh - 96px);
-	padding: 1rem 0;
-
-	background-image: url("/img/data/cars-wallpaper.jpg");
-	background-size: cover;
-	background-position: center;
+export const WrapperTitle = styled.h3`
+	width: 90%;
+	border-radius: 12px 12px 0 0;
+	background-color: #101010;
+	padding-left: 1rem;
+	padding-block: 1rem;
 `;
 
 export const VideosContainer = styled.div`
 	background-color: rgba(15, 15, 15, 0.75);
+	overflow-x: auto;
 
-	padding: 1rem;
-	margin: 0 auto;
-
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+	margin-bottom: 1rem;
 
 	width: 90%;
-	height: calc(100vh - 128px);
 
-	overflow-y: scroll;
+	border-radius: 0 0 12px 12px;
 
-	border-radius: 12px;
+	scrollbar-width: none;
+	scrollbar-color: transparent;
 
 	position: relative;
 
-	.player {
-		position: absolute;
-		top: 0;
-		border: none;
-		width: 100%;
-		height: 100%;
-		z-index: 5;
-
-		iframe {
-			border-radius: 12px;
-			width: 100%;
-			height: 100%;
-		}
+	.wrapper {
+		padding-top: 4rem;
+		width: max-content;
+		display: flex;
+		min-height: 256px;
 	}
 
-	.player__close {
-		position: absolute;
+	.wrapper__not-logged {
+		width: 100%;
+		min-height: 256px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.wrapper__not-logged button {
+		background-color: rgb(178, 34, 34);
+
+		max-width: 80%;
 
 		cursor: pointer;
 
-		border: none;
-		border-radius: 10px 0 10px;
-		width: 6rem;
-		height: 4rem;
+		border-radius: 10px;
 
-		right: 0rem;
-		top: 0rem;
+		font-size: 1.5rem;
 
-		background-color: #ff0000;
-		color: #fff;
-
-		font-size: 0.8rem;
+		padding: 1rem;
 
 		transition: all 250ms;
 
 		&:hover {
-			opacity: 0.75;
+			background-color: rgb(178, 34, 34, 0.75);
 		}
-	}
-
-	@media screen and (max-width: 768px) {
 	}
 `;
 
 export const Video = styled.div`
-	width: 25%;
-
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-
+	width: 15vw;
+	aspect-ratio: 16/9;
 	text-align: center;
-
-	margin: 1rem;
+	margin: 0 1rem;
 
 	position: relative;
 
@@ -116,7 +96,51 @@ export const Video = styled.div`
 		height: 64px;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		width: 90%;
+	}
+`;
+
+export const Player = styled.div`
+	position: absolute;
+	top: 0;
+
+	border: none;
+
+	width: 100%;
+	height: 100%;
+
+	z-index: 5;
+
+	iframe {
+		border-radius: 12px;
+
+		width: 100%;
+		height: 100%;
+	}
+
+	.player__close {
+		position: absolute;
+
+		cursor: pointer;
+
+		border: none;
+		border-radius: 10px 0 10px;
+		width: 6rem;
+		height: 4rem;
+
+		right: 1rem;
+		top: 0rem;
+
+		background-color: #ff0000;
+		color: #fff;
+
+		font-size: 0.8rem;
+
+		transition: all 250ms;
+
+		&:hover {
+			opacity: 0.75;
+		}
 	}
 `;

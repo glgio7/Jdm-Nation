@@ -72,7 +72,7 @@ export const Card = styled.div`
 		width: 100%;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 900px) {
 		margin-block: 1rem;
 		height: 50vh;
 		width: 80vw;

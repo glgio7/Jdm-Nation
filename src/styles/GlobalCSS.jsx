@@ -17,6 +17,10 @@ export const GlobalCSS = createGlobalStyle`
   font-synthesis: none;
   font-weight: normal;
 
+  border: none;
+
+  scroll-behavior: smooth;
+
 }
 
 html, body{
