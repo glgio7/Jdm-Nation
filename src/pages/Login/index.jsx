@@ -20,10 +20,10 @@ const Login = () => {
 		return <p>Loading...</p>;
 	}
 	if (user) {
-		console.log(user);
 		return (
 			<div>
-				<p>Signed In User: {user.email}</p>
+				<p>Signed In User:</p>
+				<p>{user.email}</p>
 			</div>
 		);
 	}
