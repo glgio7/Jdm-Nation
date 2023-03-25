@@ -80,11 +80,14 @@ function Watch() {
 					</div>
 				) : (
 					<div className="wrapper__not-logged">
-						<p>Ao fazer login, seus videos favoritos aparecerão aqui.</p>
+						<p>
+							Em breve: faça login, adicione videos como favorito e eles
+							aparecerão aqui.
+						</p>
 					</div>
 				)}
 			</VideosContainer>
-			<WrapperTitle>Favoritos</WrapperTitle>
+			<WrapperTitle>Recomendados</WrapperTitle>
 			<VideosContainer
 				ref={videosContainer}
 				onWheel={handleWheel}
