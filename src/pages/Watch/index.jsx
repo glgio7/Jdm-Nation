@@ -79,8 +79,7 @@ function Watch() {
 				) : (
 					<div className="wrapper__not-logged">
 						<p>
-							Em breve: faça login, adicione videos como favorito e eles
-							aparecerão aqui.
+							Em breve seus videos adicionados aos favoritos aparecerão aqui.
 						</p>
 					</div>
 				)}
