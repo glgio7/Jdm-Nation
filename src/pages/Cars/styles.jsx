@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const YearSelector = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: 2rem;
+	padding-top: 2rem;
 	margin: 0 auto;
 
 	width: 20%;

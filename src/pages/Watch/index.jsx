@@ -2,7 +2,7 @@ import { Player, Video, VideosContainer, WrapperTitle } from "./styles";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-const apiKey = import.meta.env.VITE_APP_YOUTUBE_API_KEY;
+const apiKey = import.meta.env.VITE_APP_GOOGLE_API_KEY;
 
 // "channels": "StateSide Supercars, DutchMotorsport, Eletor, Drift Sight, OutlawPhonk, Checkpoint Japan",
 
@@ -80,7 +80,7 @@ function Watch() {
 					</div>
 				) : (
 					<div className="wrapper__not-logged">
-						<button>Faça login para adicionar videos aos favoritos</button>
+						<p>Ao fazer login, seus videos favoritos aparecerão aqui.</p>
 					</div>
 				)}
 			</VideosContainer>
@@ -99,7 +99,7 @@ function Watch() {
 							onClick={() => {
 								setPlayNow(video);
 
-								if (playNow !== {}) document.body.style.overflowY = "hidden";
+								if (playNow) document.body.style.overflowY = "hidden";
 							}}
 						>
 							<div className="action-thumbnail">

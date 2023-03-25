@@ -6,8 +6,6 @@ export const StyledContainer = styled.main`
 	width: 100%;
 	min-height: calc(100vh - 48px);
 
-	padding: 1rem 0;
-
 	background-image: url("/img/data/home-wallpaper.jpg");
 	background-size: cover;
 	background-position: center;
@@ -22,7 +20,9 @@ export const StyledContainer = styled.main`
 	}
 
 	@media screen and (max-width: 900px) {
-		flex-direction: column;
+		justify-content: flex-start;
+		min-height: calc(100vh - 180px);
+		padding: 2rem 0;
 
 		background-position: right;
 	}

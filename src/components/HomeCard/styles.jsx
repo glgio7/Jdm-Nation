@@ -4,8 +4,8 @@ export const Card = styled.div`
 	position: relative;
 	z-index: 5;
 
-	width: 256px;
-	height: 360px;
+	width: 25vw;
+	aspect-ratio: 3/4;
 
 	background-color: #202020;
 	border-radius: 30px;

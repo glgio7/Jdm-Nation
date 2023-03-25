@@ -37,24 +37,11 @@ export const VideosContainer = styled.div`
 		align-items: center;
 		justify-content: center;
 	}
-	.wrapper__not-logged button {
-		background-color: rgb(178, 34, 34);
 
-		max-width: 80%;
-
-		cursor: pointer;
-
-		border-radius: 10px;
-
-		font-size: 1.5rem;
-
-		padding: 1rem;
-
-		transition: all 250ms;
-
-		&:hover {
-			background-color: rgb(178, 34, 34, 0.75);
-		}
+	.wrapper__not-logged p {
+		font-size: 1.25rem;
+		text-align: center;
+		max-width: 90%;
 	}
 `;
 
@@ -73,10 +60,6 @@ export const Video = styled.div`
 		border-radius: 12px;
 
 		object-fit: cover;
-	}
-
-	span {
-		margin: 6px 0;
 	}
 
 	.action-thumbnail {

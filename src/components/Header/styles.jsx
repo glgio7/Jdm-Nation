@@ -90,7 +90,7 @@ export const HeaderContainer = styled.header`
 	}
 
 	@media screen and (max-width: 900px) {
-		height: auto;
+		height: 180px;
 
 		flex-wrap: wrap;
 		justify-content: center;
@@ -101,6 +101,7 @@ export const HeaderContainer = styled.header`
 		h1,
 		.home-link {
 			width: 100%;
+			height: 80px;
 			flex-direction: column;
 		}
 

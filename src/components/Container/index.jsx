@@ -1,7 +1,13 @@
+import Header from "../Header";
 import { StyledContainer } from "./styles";
 
 const Container = ({ children }) => {
-	return <StyledContainer>{children}</StyledContainer>;
+	return (
+		<>
+			<Header />
+			<StyledContainer>{children}</StyledContainer>
+		</>
+	);
 };
 
 export default Container;
