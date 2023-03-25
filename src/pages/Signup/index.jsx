@@ -36,11 +36,7 @@ const Signup = () => {
 		);
 	}
 	if (loading) {
-		return (
-			<SignupContainer>
-				<LoadingContainer />
-			</SignupContainer>
-		);
+		return <LoadingContainer />;
 	}
 	if (user) {
 		return (

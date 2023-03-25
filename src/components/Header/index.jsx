@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 import { HeaderContainer } from "./styles";
 
 export default function Header() {
+	const { authenticated, username } = useContext(AuthContext);
+
 	return (
 		<HeaderContainer>
 			<Link className="home-link" to={"/"}>
@@ -15,13 +18,28 @@ export default function Header() {
 					<span className="logo__title">JDM Nation</span>
 				</h1>
 			</Link>
-			<div>
-				<Link to={"/signup"}>
-					<button>Register</button>
-				</Link>
-				<Link to={"/login"}>
-					<button>Login</button>
-				</Link>
+			<div className="actions-btn">
+				{authenticated ? (
+					<Link className="profile-btn__link">
+						<button className="profile-btn">
+							<img
+								className="profile-icon"
+								src="/img/data/profile-user.png"
+								alt="Profile"
+							/>
+							<span>{username}</span>
+						</button>
+					</Link>
+				) : (
+					<>
+						<Link to={"/signup"} className="actions-btn__link">
+							<button>Register</button>
+						</Link>
+						<Link to={"/login"} className="actions-btn__link">
+							<button>Login</button>
+						</Link>
+					</>
+				)}
 			</div>
 		</HeaderContainer>
 	);

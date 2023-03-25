@@ -5,6 +5,7 @@ function Home() {
 	return (
 		<Wrapper>
 			<HomeCard
+				loginRequired={false}
 				background={"/img/data/pattern-1.png"}
 				title={"Wiki dos carros"}
 				description={
@@ -14,6 +15,7 @@ function Home() {
 				buttonSpan={"Ver lista de carros"}
 			/>
 			<HomeCard
+				loginRequired={true}
 				background={"/img/data/pattern-2.png"}
 				title={"Videos"}
 				description={
@@ -23,6 +25,7 @@ function Home() {
 				buttonSpan={"Assistir videos"}
 			/>
 			<HomeCard
+				loginRequired={true}
 				background={"/img/data/pattern-3.png"}
 				title={"Contribuir"}
 				description={

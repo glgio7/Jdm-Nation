@@ -65,15 +65,28 @@ export const HeaderContainer = styled.header`
 		width: 100%;
 	}
 
+	.actions-btn {
+		width: 10rem;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.actions-btn__link {
+		width: 45%;
+	}
+
 	button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		height: 1.75rem;
-		width: 6rem;
+		width: 100%;
 
 		border: none;
 		border-radius: 10px;
 
 		font-weight: bold;
-		font-size: 1rem;
+		font-size: 0.75rem;
 		cursor: pointer;
 
 		color: #fff;
@@ -84,9 +97,24 @@ export const HeaderContainer = styled.header`
 		&:hover {
 			background-color: #f22222;
 		}
-		&:first-child {
-			margin-right: 0.5rem;
-		}
+	}
+
+	.profile-btn__link {
+		width: auto;
+	}
+
+	.profile-btn {
+		padding: 0 1rem;
+	}
+
+	.profile-icon {
+		width: 24px;
+		height: 24px;
+		margin-right: 0.5rem;
+	}
+
+	span::first-letter {
+		text-transform: uppercase;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -116,17 +144,6 @@ export const HeaderContainer = styled.header`
 
 		.logo__title::before {
 			display: none;
-		}
-
-		button {
-			margin-top: 0.5rem;
-
-			&:first-child {
-				margin-right: 0.5rem;
-			}
-			&:last-child {
-				margin-left: 0.5rem;
-			}
 		}
 	}
 `;

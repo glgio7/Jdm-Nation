@@ -41,7 +41,6 @@ function Watch() {
 		const scrollSize = 200;
 		const direction = event.deltaY > 0 ? 1 : -1;
 		videosContainer.current.scrollLeft += direction * scrollSize;
-		document.body.style.overflowY = "hidden";
 	};
 
 	return (
@@ -56,7 +55,6 @@ function Watch() {
 								onClick={() => {
 									setPlayNow(video);
 									videosContainer.current.scrollTop = 0;
-									videosContainer.current.style.overflowY = "hidden";
 								}}
 							>
 								<div className="action-thumbnail">
@@ -88,13 +86,7 @@ function Watch() {
 				)}
 			</VideosContainer>
 			<WrapperTitle>Recomendados</WrapperTitle>
-			<VideosContainer
-				ref={videosContainer}
-				onWheel={handleWheel}
-				onMouseLeave={() => {
-					document.body.style.overflowY = "auto";
-				}}
-			>
+			<VideosContainer ref={videosContainer} onWheel={handleWheel}>
 				<div className="wrapper">
 					{videos.reverse().map((video) => (
 						<Video

@@ -1,21 +1,31 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebaseConfig";
 import AuthContainer from "../../components/AuthContainer";
 import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Login = () => {
+	const { setAuthenticated, setUsername } = useContext(AuthContext);
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const [signInWithEmailAndPassword, user, loading, error] =
 		useSignInWithEmailAndPassword(auth);
 
-	const handleLogin = () => {
+	const handleLogin = async () => {
 		signInWithEmailAndPassword(email, password);
 	};
+
+	useEffect(() => {
+		if (user) {
+			setUsername(user.user.displayName);
+			setAuthenticated(true);
+		}
+	}, [user]);
 
 	if (error) {
 		const errorMessage = error.message.split(" ");
@@ -36,12 +46,17 @@ const Login = () => {
 			<PopUp
 				success={true}
 				href={"/"}
-				message={`Bem vindo! ${user.user.displayName}`}
+				message={`Bem vindo! ${user.user.displayName
+					.charAt(0)
+					.toUpperCase()}${user.user.displayName.slice(
+					1,
+					user.user.displayName.length
+				)}`}
 				buttonText={"Ir para página inicial"}
 			/>
 		);
 	}
-	// success, href, message, buttonText
+
 	return (
 		<AuthContainer>
 			<h2>Login</h2>

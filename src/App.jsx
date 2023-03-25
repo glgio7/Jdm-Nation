@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalCSS } from "./styles/GlobalCSS";
 import Cars from "./pages/Cars";
@@ -7,8 +7,11 @@ import Watch from "./pages/Watch";
 import Container from "./components/Container";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import { AuthContext } from "./contexts/AuthContext";
 
 const App = () => {
+	// const { user } = useContext(AuthContext);
+
 	return (
 		<>
 			<GlobalCSS />

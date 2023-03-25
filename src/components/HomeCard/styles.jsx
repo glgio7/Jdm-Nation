@@ -49,7 +49,7 @@ export const Card = styled.div`
 		width: 100%;
 
 		border: none;
-		border-radius: 0 0 10px 10px;
+		border-radius: 0 0 30px 30px;
 
 		font-weight: bold;
 		font-size: 1rem;
@@ -70,6 +70,40 @@ export const Card = styled.div`
 	.button__link {
 		height: 10%;
 		width: 100%;
+	}
+
+	///////// Not authenticated:
+
+	.login-advice {
+		background-color: rgba(0, 0, 0, 0.75);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		border-radius: 30px;
+
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		z-index: 5;
+	}
+
+	.login-advice h3 {
+		cursor: default;
+		border-radius: 30px;
+
+		padding: 0.75rem;
+
+		max-width: 80%;
+
+		background-color: #fff;
+		color: rgba(120, 0, 0, 1);
+
+		font-size: 2rem;
 	}
 
 	@media screen and (max-width: 900px) {
