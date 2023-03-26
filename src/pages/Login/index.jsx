@@ -17,7 +17,10 @@ const Login = () => {
 		useSignInWithEmailAndPassword(auth);
 
 	const handleLogin = async () => {
-		signInWithEmailAndPassword(email, password);
+		if ((email, password)) {
+			signInWithEmailAndPassword(email, password);
+		}
+		signInWithEmailAndPassword("guest@jdmnation.com", "123456");
 	};
 
 	useEffect(() => {
@@ -76,7 +79,10 @@ const Login = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button onClick={handleLogin}>Fazer login</button>
+				<div>
+					<button onClick={handleLogin}>Fazer login</button>
+					<button onClick={handleLogin}>Entrar como convidado</button>
+				</div>
 			</form>
 			<Link to={"/signup"}>
 				<span>Ainda não possui uma conta? Cadastre-se aqui.</span>

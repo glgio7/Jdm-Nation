@@ -32,16 +32,30 @@ export const Card = styled.div`
 		z-index: -1;
 	}
 
-	h2 {
-		padding: 0.5rem 0;
+	.section__title {
+		height: 3rem;
+		line-height: 3rem;
+		text-align: center;
+
 		width: 100%;
+
 		border-radius: 30px 30px 0 0;
+
 		background-color: rgba(120, 0, 0, 1);
 	}
 
+	.section__title span {
+		vertical-align: middle;
+		font-size: 1rem;
+	}
+
 	.section__description {
-		height: 30%;
 		width: 80%;
+	}
+
+	.section__button__link {
+		height: 10%;
+		width: 100%;
 	}
 
 	.section__button {
@@ -67,27 +81,19 @@ export const Card = styled.div`
 		}
 	}
 
-	.button__link {
-		height: 10%;
-		width: 100%;
-	}
-
 	///////// Not authenticated:
 
 	.login-advice {
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: rgba(0, 0, 0, 0.5);
 
 		display: flex;
-		align-items: center;
 		justify-content: center;
 
-		border-radius: 30px;
-
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
+		top: 3rem;
+		bottom: 10%;
+
+		width: 100%;
 
 		z-index: 5;
 	}
@@ -96,14 +102,16 @@ export const Card = styled.div`
 		cursor: default;
 		border-radius: 30px;
 
-		padding: 0.75rem;
+		padding: 0.25rem 0.75rem;
+		margin-top: 0.5rem;
 
 		max-width: 80%;
+		height: 3rem;
 
-		background-color: #fff;
+		background-color: rgba(255, 255, 255, 0.75);
 		color: rgba(120, 0, 0, 1);
 
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 
 	@media screen and (max-width: 900px) {
@@ -111,7 +119,9 @@ export const Card = styled.div`
 		height: 50vh;
 		width: 80vw;
 
-		.section__title,
+		.section__title {
+		}
+
 		.button__link {
 			height: 20%;
 		}

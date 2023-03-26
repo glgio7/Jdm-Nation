@@ -21,9 +21,11 @@ const HomeCard = ({
 				</div>
 			)}
 			<div className="background"></div>
-			<h2>{title}</h2>
+			<h2 className="section__title">
+				<span>{title}</span>
+			</h2>
 			<p className="section__description">{description}</p>
-			<Link className="button__link" to={href}>
+			<Link className="section__button__link" to={href}>
 				<button className="section__button">{buttonSpan}</button>
 			</Link>
 		</Card>

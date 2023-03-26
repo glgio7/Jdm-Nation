@@ -49,9 +49,10 @@ const StyledAuthContainer = styled.section`
 	}
 
 	button {
-		margin-block: 3rem;
+		margin-block: 1rem;
 
-		height: 1.75rem;
+		line-height: 1.75rem;
+		height: 2rem;
 		width: 100%;
 
 		border: none;
