@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledAuthContainer = styled.section`
+const StyledFormContainer = styled.section`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -73,6 +73,37 @@ const StyledAuthContainer = styled.section`
 		}
 	}
 
+	button:disabled {
+		opacity: 0.5;
+	}
+
+	.keep-connected {
+		margin-top: 1rem;
+		display: inline-flex;
+		align-items: center;
+		input {
+			width: 1rem;
+			height: 1rem;
+			padding: initial;
+		}
+
+		label {
+			font-size: 0.75rem;
+			margin-top: initial;
+			margin-bottom: initial;
+			margin-left: 0.25rem;
+		}
+	}
+
+	.guest-button {
+		color: rgba(120, 0, 0, 1);
+		background-color: #fff;
+
+		&:hover {
+			background-color: #ccc;
+		}
+	}
+
 	span {
 		font-size: 0.75rem;
 		width: 100%;
@@ -104,8 +135,8 @@ const StyledAuthContainer = styled.section`
 	}
 `;
 
-const AuthContainer = ({ children }) => {
-	return <StyledAuthContainer>{children}</StyledAuthContainer>;
+const FormContainer = ({ children }) => {
+	return <StyledFormContainer>{children}</StyledFormContainer>;
 };
 
-export default AuthContainer;
+export default FormContainer;

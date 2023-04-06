@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyBBFFsXDo39DZm045q10wfmyZIjfc2H_6k",
+	apiKey: import.meta.env.VITE_APP_GOOGLE_API_KEY,
 
 	authDomain: "jdm-nation.firebaseapp.com",
 

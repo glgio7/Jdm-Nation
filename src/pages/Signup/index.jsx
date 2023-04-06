@@ -4,7 +4,7 @@ import {
 	useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { auth } from "../../services/firebaseConfig";
-import AuthContainer from "../../components/AuthContainer";
+import FormContainer from "../../components/FormContainer";
 import LoadingContainer from "../../components/Loading/";
 import PopUp from "../../components/PopUp";
 import { Link } from "react-router-dom";
@@ -13,6 +13,7 @@ const Signup = () => {
 	const [displayName, setDisplayName] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [passwordMatch, setPasswordMatch] = useState(false);
 
 	const [updateProfile] = useUpdateProfile(auth);
 	const [createUserWithEmailAndPassword, user, loading, error] =
@@ -50,7 +51,7 @@ const Signup = () => {
 	}
 
 	return (
-		<AuthContainer>
+		<FormContainer>
 			<h2>Register</h2>
 			<form>
 				<label htmlFor="nome">Nome</label>
@@ -74,14 +75,28 @@ const Signup = () => {
 					type="password"
 					id="password"
 					value={password}
+					required
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button onClick={handleRegister}>Register</button>
+				<label htmlFor="confirmPassword">Confirm Password</label>
+				<input
+					type="password"
+					id="confirmPassword"
+					required
+					onChange={(e) =>
+						e.target.value === password
+							? setPasswordMatch(false)
+							: setPasswordMatch(true)
+					}
+				/>
+				<button onClick={handleRegister} disabled={passwordMatch}>
+					Register
+				</button>
 			</form>
 			<Link to={"/login"}>
 				<span>Já possui uma conta? Faça login aqui.</span>
 			</Link>
-		</AuthContainer>
+		</FormContainer>
 	);
 };
 
