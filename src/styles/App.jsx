@@ -6,7 +6,7 @@ export const StyledContainer = styled.main`
 	width: 100%;
 	min-height: calc(100vh - 48px);
 
-	background-image: url("/img/data/home-wallpaper.jpg");
+	background-image: url("/img/data/home-background.jpg");
 	background-size: cover;
 	background-position: center;
 

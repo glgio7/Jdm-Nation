@@ -14,17 +14,16 @@ const HomeCard = ({
 	const { authenticated } = useContext(AuthContext);
 
 	return (
-		<Card background={background}>
+		<Card>
 			{!authenticated && loginRequired && (
 				<div className="login-advice">
 					<h3>Login necessário</h3>
 				</div>
 			)}
-			<div className="background"></div>
 			<h2 className="section__title">
 				<span>{title}</span>
 			</h2>
-			<p className="section__description">{description}</p>
+			<div className="section__description">{description}</div>
 			<Link className="section__button__link" to={href}>
 				<button className="section__button">{buttonSpan}</button>
 			</Link>

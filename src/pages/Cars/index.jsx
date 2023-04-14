@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { YearSelector, Wrapper, Visualizer } from "./styles";
+import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
 import carList from "../../api/cars.json";
 
 function Cars() {
@@ -25,7 +25,7 @@ function Cars() {
 		: (document.body.style.overflowY = "auto");
 
 	return (
-		<>
+		<Container>
 			<YearSelector>
 				<span>Filtrar por ano</span>
 				<select onChange={(e) => setAno(e.target.value)}>
@@ -82,7 +82,7 @@ function Cars() {
 					</ul>
 				</div>
 			</Visualizer>
-		</>
+		</Container>
 	);
 }
 

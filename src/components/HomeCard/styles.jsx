@@ -5,10 +5,10 @@ export const Card = styled.div`
 	z-index: 5;
 
 	width: 25vw;
-	aspect-ratio: 3/4;
+	aspect-ratio: 4/3;
 
-	background-color: #202020;
-	border-radius: 30px;
+	background-color: rgba(0, 0, 0, 0.9);
+	/* border-radius: 30px; */
 
 	text-align: center;
 
@@ -17,18 +17,22 @@ export const Card = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
+	img {
+		width: 100%;
+	}
+
 	.background {
 		background-image: ${({ background }) => `url('${background}')`};
 		background-position: center;
 		background-size: cover;
-		border-radius: 30px;
-		opacity: 0.25;
+		/* opacity: 0; */
+		/* opacity: 0.5; */
 
 		position: absolute;
-		top: 0;
-		bottom: 0;
+		top: 3rem;
+		bottom: 3rem;
 		left: 0;
-		right: 0;
+		right: 75%;
 		z-index: -1;
 	}
 
@@ -39,14 +43,18 @@ export const Card = styled.div`
 
 		width: 100%;
 
-		border-radius: 30px 30px 0 0;
+		/* border-radius: 30px 30px 0 0; */
 
-		background-color: rgba(120, 0, 0, 1);
+		/* background-color: rgba(120, 0, 0, 1); */
+		border: 1px rgba(120, 0, 0, 1) solid;
+		border-bottom: none;
 	}
 
 	.section__title span {
 		vertical-align: middle;
 		font-size: 1rem;
+
+		color: #ff0000;
 	}
 
 	.section__description {
@@ -54,7 +62,7 @@ export const Card = styled.div`
 	}
 
 	.section__button__link {
-		height: 10%;
+		height: 3rem;
 		width: 100%;
 	}
 
@@ -63,12 +71,13 @@ export const Card = styled.div`
 		width: 100%;
 
 		border: none;
-		border-radius: 0 0 30px 30px;
 
 		font-weight: bold;
 		font-size: 1rem;
 
-		background-color: #101010;
+		border: 1px rgba(120, 0, 0, 1) solid;
+		border-top: none;
+		background-color: rgba(0, 0, 0, 0.8);
 		color: #fff;
 
 		transition: all 300ms;
@@ -76,22 +85,23 @@ export const Card = styled.div`
 		&:hover {
 			cursor: pointer;
 
-			background-color: #fff;
-			color: #000;
+			/* background-color: #fff; */
+			color: #ff0000;
 		}
 	}
 
 	///////// Not authenticated:
 
 	.login-advice {
-		background-color: rgba(0, 0, 0, 0.5);
+		/* background-color: rgba(0, 0, 0, 0.5); */
 
 		display: flex;
+		align-items: flex-end;
 		justify-content: center;
 
 		position: absolute;
 		top: 3rem;
-		bottom: 10%;
+		bottom: 3rem;
 
 		width: 100%;
 
@@ -100,18 +110,20 @@ export const Card = styled.div`
 
 	.login-advice h3 {
 		cursor: default;
-		border-radius: 30px;
+		/* border-radius: 30px; */
 
 		padding: 0.25rem 0.75rem;
-		margin-top: 0.5rem;
+		/* margin-top: 0.5rem; */
 
-		max-width: 80%;
-		height: 3rem;
+		width: 100%;
+		height: 2rem;
 
-		background-color: rgba(255, 255, 255, 0.75);
-		color: rgba(120, 0, 0, 1);
+		/* background-color: rgba(255, 255, 255, 0.75); */
+		color: #fff;
+		background-color: rgba(120, 0, 0, 0.5);
 
-		font-size: 1.5rem;
+		font-size: 1rem;
+		font-weight: normal;
 	}
 
 	@media screen and (max-width: 900px) {

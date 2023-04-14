@@ -1,9 +1,23 @@
 import styled from "styled-components";
 
+export const Container = styled.main`
+	width: 100%;
+	min-height: calc(100vh - 48px);
+
+	background-image: url("/img/data/background-wiki.jpg");
+	background-size: cover;
+	background-position: center;
+	padding: 2rem 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const YearSelector = styled.div`
 	display: flex;
 	justify-content: center;
-	padding-top: 2rem;
 	margin: 0 auto;
 
 	width: 20%;
