@@ -8,7 +8,6 @@ export const Card = styled.div`
 	aspect-ratio: 4/3;
 
 	background-color: rgba(0, 0, 0, 0.9);
-	/* border-radius: 30px; */
 
 	text-align: center;
 
@@ -22,18 +21,8 @@ export const Card = styled.div`
 	}
 
 	.background {
-		background-image: ${({ background }) => `url('${background}')`};
-		background-position: center;
-		background-size: cover;
-		/* opacity: 0; */
-		/* opacity: 0.5; */
-
-		position: absolute;
-		top: 3rem;
-		bottom: 3rem;
-		left: 0;
-		right: 75%;
-		z-index: -1;
+		object-fit: cover;
+		aspect-ratio: 16/9;
 	}
 
 	.section__title {
@@ -43,9 +32,6 @@ export const Card = styled.div`
 
 		width: 100%;
 
-		/* border-radius: 30px 30px 0 0; */
-
-		/* background-color: rgba(120, 0, 0, 1); */
 		border: 1px rgba(120, 0, 0, 1) solid;
 		border-bottom: none;
 	}
@@ -58,7 +44,23 @@ export const Card = styled.div`
 	}
 
 	.section__description {
-		width: 80%;
+		width: 100%;
+		min-height: 4rem;
+
+		background-color: rgba(0, 0, 0, 1);
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		padding: 0.25rem 0;
+	}
+
+	.section__description span {
+		padding-inline: 1rem;
+
+		line-height: 1.25rem;
+		font-size: 0.85rem;
 	}
 
 	.section__button__link {
@@ -73,7 +75,7 @@ export const Card = styled.div`
 		border: none;
 
 		font-weight: bold;
-		font-size: 1rem;
+		font-size: 0.9rem;
 
 		border: 1px rgba(120, 0, 0, 1) solid;
 		border-top: none;
@@ -85,7 +87,6 @@ export const Card = styled.div`
 		&:hover {
 			cursor: pointer;
 
-			/* background-color: #fff; */
 			color: #ff0000;
 		}
 	}
@@ -93,10 +94,7 @@ export const Card = styled.div`
 	///////// Not authenticated:
 
 	.login-advice {
-		/* background-color: rgba(0, 0, 0, 0.5); */
-
 		display: flex;
-		align-items: flex-end;
 		justify-content: center;
 
 		position: absolute;
@@ -110,15 +108,12 @@ export const Card = styled.div`
 
 	.login-advice h3 {
 		cursor: default;
-		/* border-radius: 30px; */
 
 		padding: 0.25rem 0.75rem;
-		/* margin-top: 0.5rem; */
 
 		width: 100%;
 		height: 2rem;
 
-		/* background-color: rgba(255, 255, 255, 0.75); */
 		color: #fff;
 		background-color: rgba(120, 0, 0, 0.5);
 
@@ -130,9 +125,6 @@ export const Card = styled.div`
 		margin-block: 1rem;
 		height: 50vh;
 		width: 80vw;
-
-		.section__title {
-		}
 
 		.button__link {
 			height: 20%;
