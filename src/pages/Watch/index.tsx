@@ -1,6 +1,7 @@
 import { Player, Video, VideosContainer, WrapperTitle } from "./styles";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import { IVideoItem } from "./types";
 
 const apiKey = import.meta.env.VITE_APP_GOOGLE_API_KEY;
 
@@ -11,13 +12,11 @@ const apiUrl =
 	"https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=30&playlistId=";
 
 function Watch() {
-	const [videos, setVideos] = useState([]);
+	const [videos, setVideos] = useState<IVideoItem[]>([]);
 
-	const [playNow, setPlayNow] = useState({});
+	const [playNow, setPlayNow] = useState<IVideoItem | null>(null);
 
-	const [logged, setLogged] = useState(false);
-
-	const videosContainer = useRef();
+	const videosContainer = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const promises = playlistIds.map((id) =>
@@ -27,7 +26,7 @@ function Watch() {
 		Promise.all(promises)
 			.then((responses) => {
 				const videos = responses.reduce(
-					(acc, response) => [...acc, ...response.data.items],
+					(acc: IVideoItem[], response) => [...acc, ...response.data.items],
 					[]
 				);
 				setVideos(videos);
@@ -37,17 +36,19 @@ function Watch() {
 			});
 	}, []);
 
-	const handleWheel = (event) => {
+	const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
 		const scrollSize = 200;
 		const direction = event.deltaY > 0 ? 1 : -1;
-		videosContainer.current.scrollLeft += direction * scrollSize;
+		if (videosContainer) {
+			videosContainer.current!.scrollLeft += direction * scrollSize;
+		}
 	};
 
 	return (
 		<>
-			<WrapperTitle>Favoritos</WrapperTitle>
+			{/* <WrapperTitle>Favoritos</WrapperTitle>
 			<VideosContainer ref={videosContainer}>
-				{logged ? (
+				{username !== "Convidado" ? (
 					<div className="wrapper">
 						{videos.reverse().map((video) => (
 							<Video
@@ -83,7 +84,7 @@ function Watch() {
 						</p>
 					</div>
 				)}
-			</VideosContainer>
+			</VideosContainer> */}
 			<WrapperTitle>Recomendados</WrapperTitle>
 			<VideosContainer ref={videosContainer} onWheel={handleWheel}>
 				<div className="wrapper">
@@ -119,13 +120,15 @@ function Watch() {
 
 			{/* /////// Player below*/}
 
-			{playNow.snippet && (
+			{playNow && playNow.snippet && (
 				<Player>
 					<button
 						className="player__close"
 						onClick={() => {
-							setPlayNow({});
-							videosContainer.current.style.overflowY = "auto";
+							setPlayNow(null);
+							if (videosContainer) {
+								videosContainer.current!.style.overflowY = "auto";
+							}
 
 							if (playNow) {
 								document.body.style.overflowY = "hidden";

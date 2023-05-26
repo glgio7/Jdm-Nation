@@ -1,5 +1,5 @@
 import HomeCard from "../../components/HomeCard";
-import { StyledSection, Wrapper } from "./styles";
+import { Wrapper } from "./styles";
 
 function Home() {
 	return (

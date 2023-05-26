@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { PopUpContainer } from "./styles";
+import { PopUpProps } from "./types";
 
-const PopUp = ({ success, href, message, buttonText }) => {
+const PopUp = ({ success, href, message, buttonText }: PopUpProps) => {
 	const navigate = useNavigate();
 
 	const handlePopUp = () => {

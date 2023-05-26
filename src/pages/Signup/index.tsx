@@ -5,7 +5,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { auth } from "../../../services/firebaseConfig";
 import FormContainer from "../../components/FormContainer";
-import LoadingContainer from "../../components/Loading/";
+import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";
 import { Link } from "react-router-dom";
 

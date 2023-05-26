@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
 import carList from "../../api/cars.json";
+import { ICar } from "./types";
 
 function Cars() {
 	const [ano, setAno] = useState("90");
-	const [itemDetailed, setItemDetailed] = useState([]);
+	const [itemDetailed, setItemDetailed] = useState<ICar | undefined>(
+		{} as ICar
+	);
 
 	const listaAno =
 		ano === "2000+"
@@ -15,12 +18,12 @@ function Cars() {
 			? carList.y80
 			: carList.y70;
 
-	const showDetails = (id) => {
+	const showDetails = (id: string) => {
 		const item = listaAno.find((value) => value.id == id);
 		setItemDetailed(item);
 	};
 
-	itemDetailed.id
+	itemDetailed !== undefined
 		? (document.body.style.overflowY = "hidden")
 		: (document.body.style.overflowY = "auto");
 
@@ -53,33 +56,39 @@ function Cars() {
 			<Visualizer>
 				<div
 					className={
-						itemDetailed.id ? "info-visualizer active" : "info-visualizer"
+						itemDetailed !== undefined
+							? "info-visualizer active"
+							: "info-visualizer"
 					}
 				>
-					<button
-						className="info-visualizer__close"
-						onClick={() => setItemDetailed([])}
-					>
-						Fechar
-					</button>
-					<img src={itemDetailed.image_path} alt="" />
-					<ul className="info-visualizer__details">
-						<li>
-							<h2>{itemDetailed.name}</h2>
-						</li>
-						<li>
-							<h3>Potência</h3>
-							<span>{itemDetailed.power}</span>
-						</li>
-						<li>
-							<h3>Velocidade Máxima</h3>
-							<span>{itemDetailed.velMax}</span>
-						</li>
-						<li>
-							<h3>0 a 100km/h</h3>
-							<span>{itemDetailed.t0to100}</span>
-						</li>
-					</ul>
+					{itemDetailed !== undefined && (
+						<>
+							<button
+								className="info-visualizer__close"
+								onClick={() => setItemDetailed(undefined)}
+							>
+								Fechar
+							</button>
+							<img src={itemDetailed.image_path} alt="" />
+							<ul className="info-visualizer__details">
+								<li>
+									<h2>{itemDetailed.name}</h2>
+								</li>
+								<li>
+									<h3>Potência</h3>
+									<span>{itemDetailed.power}</span>
+								</li>
+								<li>
+									<h3>Velocidade Máxima</h3>
+									<span>{itemDetailed.velMax}</span>
+								</li>
+								<li>
+									<h3>0 a 100km/h</h3>
+									<span>{itemDetailed.t0to100}</span>
+								</li>
+							</ul>
+						</>
+					)}
 				</div>
 			</Visualizer>
 		</Container>

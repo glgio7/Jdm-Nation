@@ -2,6 +2,7 @@ import { Card } from "./styles";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { HomeCardProps } from "./types";
 
 const HomeCard = ({
 	loginRequired,
@@ -10,7 +11,7 @@ const HomeCard = ({
 	description,
 	href,
 	buttonSpan,
-}) => {
+}: HomeCardProps) => {
 	const { authenticated } = useContext(AuthContext);
 
 	return (

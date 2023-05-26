@@ -3,14 +3,18 @@ import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import Login from "../pages/Login";
 
-const PrivateRoute = ({ children }) => {
+export type PrivateRouteProps = {
+	children: React.ReactNode;
+};
+
+const PrivateRoute = ({ children }: PrivateRouteProps): React.ReactElement => {
 	const { authenticated } = useContext(AuthContext);
 
 	if (!authenticated) {
 		return <Login />;
 	}
 
-	return children;
+	return children as React.ReactElement;
 };
 
 export default PrivateRoute;

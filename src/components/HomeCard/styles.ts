@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Card = styled.div`
+export const Card = styled.div<{ background: string }>`
 	position: relative;
 	z-index: 5;
 

@@ -17,16 +17,19 @@ const Login = () => {
 		useSignInWithEmailAndPassword(auth);
 
 	const handleLogin = async () => {
-		if ((email, password)) {
+		if (email && password) {
 			signInWithEmailAndPassword(email, password);
 		}
 		signInWithEmailAndPassword("guest@jdmnation.com", "123456");
+		setUsername("Convidado");
 	};
 
 	useEffect(() => {
 		if (user) {
-			setUsername(user.user.displayName);
 			setAuthenticated(true);
+		}
+		if (user && user.user.displayName) {
+			setUsername(user!.user.displayName);
 		}
 	}, [user]);
 

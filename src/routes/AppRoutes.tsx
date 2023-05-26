@@ -9,13 +9,13 @@ import PrivateRoute from "./PrivateRoute";
 const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route exact path="/" element={<Home />} />
+			<Route path="/" element={<Home />} />
 			<Route path="/cars" element={<Cars />} />
 			<Route
 				path="/watch"
 				element={
 					<PrivateRoute>
-						<Watch />{" "}
+						<Watch />
 					</PrivateRoute>
 				}
 			/>
