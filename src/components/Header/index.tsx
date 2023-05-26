@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { HeaderContainer } from "./styles";
@@ -20,7 +20,7 @@ export default function Header() {
 			</Link>
 			<div className="actions-btn">
 				{authenticated ? (
-					<Link className="profile-btn__link">
+					<Link className="profile-btn__link" to={"/"}>
 						<button className="profile-btn">
 							<img
 								className="profile-icon"
