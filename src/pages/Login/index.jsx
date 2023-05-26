@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../../services/firebaseConfig";
+import { auth } from "../../../services/firebaseConfig";
 import FormContainer from "../../components/FormContainer";
 import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";
