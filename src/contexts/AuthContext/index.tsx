@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { createContext } from "react";
-import { AuthProviderProps, IAuthContext } from "./types";
+import { AuthProviderProps, IAuthContext, IUser } from "./types";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [authenticated, setAuthenticated] = useState<boolean>(false);
-	const [username, setUsername] = useState<string>("");
+	const [user, setUser] = useState<IUser | null>(null);
 
 	const contextValues = {
 		authenticated,
 		setAuthenticated,
-		username,
-		setUsername,
+		user,
+		setUser,
 	};
 	return (
 		<AuthContext.Provider value={contextValues}>

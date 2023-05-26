@@ -1,63 +1,56 @@
-import { useContext, useEffect, useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../../../services/firebaseConfig";
+import { useState } from "react";
 import FormContainer from "../../components/FormContainer";
 import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useApi } from "../../hooks/useApi/useApi";
+import { useAuth } from "../../hooks/useAuth/useAuth";
 
 const Login = () => {
-	const { setAuthenticated, setUsername, username } = useContext(AuthContext);
+	const { setAuthenticated, user, setUser } = useAuth();
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loading, setLoading] = useState<boolean>(false);
 
-	const [signInWithEmailAndPassword, user, loading, error] =
-		useSignInWithEmailAndPassword(auth);
+	const { signIn } = useApi();
 
-	const handleLogin = async () => {
-		if (email && password) {
-			signInWithEmailAndPassword(email, password);
-		}
-		signInWithEmailAndPassword("guest@jdmnation.com", "123456");
-		setUsername("Convidado");
-	};
-
-	useEffect(() => {
+	const handleSignIn = async (email: string, password: string) => {
+		const user = await signIn({ email, password, setLoading });
 		if (user) {
+			setUser(user);
 			setAuthenticated(true);
 		}
-		if (user && user.user.displayName) {
-			setUsername(user!.user.displayName);
-		}
-	}, [user]);
+	};
 
-	if (error) {
-		const errorMessage = error.message.split(" ");
-		return (
-			<PopUp
-				success={false}
-				href={""}
-				message={errorMessage[errorMessage.length - 1]}
-				buttonText={"Tentar novamente"}
-			/>
-		);
-	}
-	if (loading) {
-		return <LoadingContainer />;
-	}
+	// if (error) {
+	// 	const errorMessage = error.message.split(" ");
+	// 	return (
+	// 		<PopUp
+	// 			success={false}
+	// 			href={""}
+	// 			message={errorMessage[errorMessage.length - 1]}
+	// 			buttonText={"Tentar novamente"}
+	// 		/>
+	// 	);
+	// }
+	// if (loading) {
+	// 	return <LoadingContainer />;
+	// }
 	if (user) {
 		return (
 			<PopUp
 				success={true}
 				href={"/"}
-				message={`Bem vindo! ${username
+				message={`Bem vindo! ${user.displayName
 					.charAt(0)
-					.toUpperCase()}${username.slice(1, username.length)}`}
+					.toUpperCase()}${user.displayName.slice(1, user.displayName.length)}`}
 				buttonText={"Ir para página inicial"}
 			/>
 		);
+	}
+	if (loading) {
+		return <LoadingContainer />;
 	}
 
 	return (
@@ -84,8 +77,17 @@ const Login = () => {
 					<label htmlFor="manter-conectado">Manter conectado</label>
 				</div>
 				<div>
-					<button onClick={handleLogin}>Fazer login</button>
-					<button className="guest-button" onClick={handleLogin}>
+					<button
+						onClick={() => {
+							handleSignIn(email, password);
+						}}
+					>
+						Fazer login
+					</button>
+					<button
+						className="guest-button"
+						onClick={() => handleSignIn("guest@jdmnation.com", "123456")}
+					>
 						Entrar como convidado
 					</button>
 				</div>

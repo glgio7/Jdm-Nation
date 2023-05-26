@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext";
 import { HeaderContainer } from "./styles";
+import { useAuth } from "../../hooks/useAuth/useAuth";
 
 export default function Header() {
-	const { authenticated, username } = useContext(AuthContext);
+	// const { authenticated, username } = useContext(AuthContext);
+
+	const { authenticated, user } = useAuth();
 
 	return (
 		<HeaderContainer>
@@ -27,7 +28,7 @@ export default function Header() {
 								src="/img/data/profile-user.png"
 								alt="Profile"
 							/>
-							<span>{username}</span>
+							<span>{user.displayName}</span>
 						</button>
 					</Link>
 				) : (
