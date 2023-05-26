@@ -8,6 +8,7 @@ export const useApi = () => ({
 		email,
 		password,
 		setLoading,
+		setError,
 	}: SignInProps): Promise<IUser | null> => {
 		setLoading(true);
 
@@ -18,10 +19,10 @@ export const useApi = () => ({
 			})
 			.catch((error) => {
 				setLoading(false);
-				const errorCode = error.code;
-				const errorMessage = error.message;
+				const errorCode = error.code.split("/");
+				const errorMessage = errorCode[errorCode.length - 1];
 
-				console.log(`code: ${errorCode}`, `message: ${errorMessage}`);
+				setError(errorMessage);
 				return null;
 			});
 	},

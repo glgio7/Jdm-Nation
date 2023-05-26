@@ -12,31 +12,29 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState<boolean>(false);
+	const [error, setError] = useState("");
 
 	const { signIn } = useApi();
 
 	const handleSignIn = async (email: string, password: string) => {
-		const user = await signIn({ email, password, setLoading });
+		const user = await signIn({ email, password, setLoading, setError });
 		if (user) {
 			setUser(user);
 			setAuthenticated(true);
 		}
 	};
 
-	// if (error) {
-	// 	const errorMessage = error.message.split(" ");
-	// 	return (
-	// 		<PopUp
-	// 			success={false}
-	// 			href={""}
-	// 			message={errorMessage[errorMessage.length - 1]}
-	// 			buttonText={"Tentar novamente"}
-	// 		/>
-	// 	);
-	// }
-	// if (loading) {
-	// 	return <LoadingContainer />;
-	// }
+	if (error) {
+		return (
+			<PopUp
+				success={false}
+				href={""}
+				message={error}
+				buttonText={"Tentar novamente"}
+			/>
+		);
+	}
+
 	if (user) {
 		return (
 			<PopUp
