@@ -3,7 +3,7 @@ import {
 	useCreateUserWithEmailAndPassword,
 	useUpdateProfile,
 } from "react-firebase-hooks/auth";
-import { auth } from "../../../services/firebaseConfig";
+import { auth } from "../../../services/auth";
 import FormContainer from "../../components/FormContainer";
 import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createContext } from "react";
 import { AuthProviderProps, IAuthContext, IUser } from "./types";
-import { auth } from "../../../services/firebaseConfig";
+import { auth } from "../../../services/auth";
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 

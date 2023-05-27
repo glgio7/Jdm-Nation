@@ -1,4 +1,4 @@
-import { auth } from "../../../services/firebaseConfig";
+import { auth } from "../../../services/auth";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { SignInProps } from "./types";
 import { IUser } from "../../contexts/AuthContext/types";
