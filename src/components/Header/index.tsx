@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import { HeaderContainer } from "./styles";
 import { useAuth } from "../../hooks/useAuth/useAuth";
+import { RiUserFill, RiLogoutBoxLine } from "react-icons/ri";
+import { useApi } from "../../hooks/useApi/useApi";
 
 export default function Header() {
-	// const { authenticated, username } = useContext(AuthContext);
+	const { authenticated, user, setAuthenticated, setUser } = useAuth();
+	const { signOut } = useApi();
 
-	const { authenticated, user } = useAuth();
+	const handleSignOut = async () => {
+		await signOut();
+		setAuthenticated(false);
+		setUser(null);
+	};
 
 	return (
 		<HeaderContainer>
@@ -20,18 +27,18 @@ export default function Header() {
 				</h1>
 			</Link>
 			<div className="actions-btn">
-				{authenticated ? (
-					<Link className="profile-btn__link" to={"/"}>
-						<button className="profile-btn">
-							<img
-								className="profile-icon"
-								src="/img/data/profile-user.png"
-								alt="Profile"
-							/>
-							<span>{user.displayName}</span>
-						</button>
-					</Link>
-				) : (
+				{authenticated && (
+					<>
+						<RiLogoutBoxLine className="profile-icon" onClick={handleSignOut} />
+						<Link className="profile-btn__link" to={"/"}>
+							<button className="profile-btn">
+								<RiUserFill className="profile-icon" />
+								<span>{user && user.displayName}</span>
+							</button>
+						</Link>
+					</>
+				)}
+				{!authenticated && (
 					<>
 						<Link to={"/signup"} className="actions-btn__link">
 							<button>Register</button>

@@ -46,45 +46,12 @@ function Watch() {
 
 	return (
 		<>
-			{/* <WrapperTitle>Favoritos</WrapperTitle>
+			<WrapperTitle>Favoritos</WrapperTitle>
 			<VideosContainer ref={videosContainer}>
-				{username !== "Convidado" ? (
-					<div className="wrapper">
-						{videos.reverse().map((video) => (
-							<Video
-								key={video.id}
-								onClick={() => {
-									setPlayNow(video);
-									videosContainer.current.scrollTop = 0;
-								}}
-							>
-								<div className="action-thumbnail">
-									<img
-										src={video.snippet.thumbnails.medium.url}
-										alt={video.snippet.title}
-									/>
-									<img
-										className="action-thumbnail__play"
-										src="/img/data/play.png"
-										alt="Play"
-									/>
-								</div>
-								<span>
-									{video.snippet.title.length > 40
-										? video.snippet.title.substring(0, 40) + "..."
-										: video.snippet.title}
-								</span>
-							</Video>
-						))}
-					</div>
-				) : (
-					<div className="wrapper__not-logged">
-						<p>
-							Em breve seus videos adicionados aos favoritos aparecerão aqui.
-						</p>
-					</div>
-				)}
-			</VideosContainer> */}
+				<div className="wrapper__not-logged">
+					<p>Em breve seus videos adicionados aos favoritos aparecerão aqui.</p>
+				</div>
+			</VideosContainer>
 			<WrapperTitle>Recomendados</WrapperTitle>
 			<VideosContainer ref={videosContainer} onWheel={handleWheel}>
 				<div className="wrapper">

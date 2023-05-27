@@ -4,7 +4,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import Login from "../pages/Login";
 
 export type PrivateRouteProps = {
-	children: React.ReactNode;
+	children: React.ReactElement;
 };
 
 const PrivateRoute = ({ children }: PrivateRouteProps): React.ReactElement => {
@@ -14,7 +14,7 @@ const PrivateRoute = ({ children }: PrivateRouteProps): React.ReactElement => {
 		return <Login />;
 	}
 
-	return children as React.ReactElement;
+	return children;
 };
 
 export default PrivateRoute;

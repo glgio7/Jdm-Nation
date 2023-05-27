@@ -69,6 +69,7 @@ export const HeaderContainer = styled.header`
 		width: 10rem;
 		display: flex;
 		justify-content: space-around;
+		align-items: center;
 	}
 
 	.actions-btn__link {
@@ -108,9 +109,13 @@ export const HeaderContainer = styled.header`
 	}
 
 	.profile-icon {
-		width: 24px;
-		height: 24px;
+		cursor: pointer;
+		font-size: 1rem;
+
 		margin-right: 0.5rem;
+	}
+
+	.logout-btn {
 	}
 
 	span::first-letter {
