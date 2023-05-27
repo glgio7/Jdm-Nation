@@ -1,47 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
-import carList from "../../api/cars.json";
+import fullCarList from "../../api/cars.json";
 import { ICar } from "./types";
 
 function Cars() {
-	const [ano, setAno] = useState("90");
-	const [itemDetailed, setItemDetailed] = useState<ICar | undefined>(
-		{} as ICar
+	const [itemDetailed, setItemDetailed] = useState<ICar | null>(null);
+	const [year, setYear] = useState<string>("y90");
+	const [carList, setCarList] = useState<ICar[]>(
+		fullCarList[year as keyof typeof fullCarList]
 	);
 
-	const listaAno =
-		ano === "2000+"
-			? carList.y2000
-			: ano === "90"
-			? carList.y90
-			: ano === "80"
-			? carList.y80
-			: carList.y70;
+	useEffect(() => {
+		setCarList(fullCarList[year as keyof typeof fullCarList]);
+	}, [year]);
 
-	const showDetails = (id: string) => {
-		const item = listaAno.find((value) => value.id == id);
-		setItemDetailed(item);
+	useEffect(() => {
+		itemDetailed
+			? (document.body.style.overflowY = "hidden")
+			: (document.body.style.overflowY = "auto");
+	}, [itemDetailed]);
+
+	let listTitle = year
+		.split("")
+		.filter((letter) => letter !== "y")
+		.join("");
+
+	const showDetails = (carId: string) => {
+		const item = carList.find((value: ICar) => value.id == carId);
+		setItemDetailed(item || null);
 	};
-
-	itemDetailed !== undefined
-		? (document.body.style.overflowY = "hidden")
-		: (document.body.style.overflowY = "auto");
 
 	return (
 		<Container>
 			<YearSelector>
 				<span>Filtrar por ano</span>
-				<select onChange={(e) => setAno(e.target.value)}>
-					<option value={"90"}>Anos 90</option>
-					<option value={"80"}>Anos 80</option>
-					<option value={"70"}>Anos 70</option>
-					<option value={"2000+"}>Anos 2000</option>
+				<select onChange={(e) => setYear(e.target.value)}>
+					<option value={"y90"}>Anos 90</option>
+					<option value={"y80"}>Anos 80</option>
+					<option value={"y70"}>Anos 70</option>
+					<option value={"y2000"}>Anos 2000</option>
 				</select>
 			</YearSelector>
 			<Wrapper>
-				<h2>{`Anos ${ano}`}</h2>
+				<h2>{`Anos ${listTitle}`}</h2>
 				<ul className="card__lista">
-					{listaAno.map((item) => (
+					{carList.map((item: ICar) => (
 						<li
 							className="card__item"
 							key={item.id}
@@ -56,16 +59,14 @@ function Cars() {
 			<Visualizer>
 				<div
 					className={
-						itemDetailed !== undefined
-							? "info-visualizer active"
-							: "info-visualizer"
+						itemDetailed ? "info-visualizer active" : "info-visualizer"
 					}
 				>
-					{itemDetailed !== undefined && (
+					{itemDetailed && (
 						<>
 							<button
 								className="info-visualizer__close"
-								onClick={() => setItemDetailed(undefined)}
+								onClick={() => setItemDetailed(null)}
 							>
 								Fechar
 							</button>
