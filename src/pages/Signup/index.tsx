@@ -1,13 +1,10 @@
-import { useState } from "react";
-import {
-	useCreateUserWithEmailAndPassword,
-	useUpdateProfile,
-} from "react-firebase-hooks/auth";
-import { auth } from "../../../services/auth";
 import FormContainer from "../../components/FormContainer";
 import LoadingContainer from "../../components/Loading";
 import PopUp from "../../components/PopUp";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useApi } from "../../hooks/useApi/useApi";
+import { useAuth } from "../../hooks/useAuth/useAuth";
 
 const Signup = () => {
 	const [displayName, setDisplayName] = useState("");
@@ -15,23 +12,30 @@ const Signup = () => {
 	const [password, setPassword] = useState("");
 	const [passwordMatch, setPasswordMatch] = useState(false);
 
-	const [updateProfile] = useUpdateProfile(auth);
-	const [createUserWithEmailAndPassword, user, loading, error] =
-		useCreateUserWithEmailAndPassword(auth);
+	const { signUp } = useApi();
+	const { user, setUser } = useAuth();
+
+	const [loading, setLoading] = useState<boolean>(false);
+	const [error, setError] = useState("");
 
 	const handleRegister = async () => {
-		createUserWithEmailAndPassword(email, password)
-			.then(() => updateProfile({ displayName }))
-			.catch((err) => console.log(err));
+		const user = await signUp({
+			email,
+			password,
+			displayName,
+			setLoading,
+			setError,
+		});
+
+		setUser(user);
 	};
 
 	if (error) {
-		const errorMessage = error.message.split(" ");
 		return (
 			<PopUp
 				success={false}
 				href={""}
-				message={errorMessage[errorMessage.length - 1]}
+				message={error}
 				buttonText={"Tentar novamente"}
 			/>
 		);
