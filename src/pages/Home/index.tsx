@@ -1,9 +1,7 @@
 import HomeCard from "../../components/HomeCard";
-import { useDb } from "../../hooks/useDb/useDb";
 import { Wrapper } from "./styles";
 
 function Home() {
-	useDb().getAll();
 	return (
 		<Wrapper>
 			<HomeCard

@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
 import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
-import fullCarList from "../../api/cars.json";
 import { ICar } from "./types";
-import { IAddCar, useDb } from "../../hooks/useDb/useDb";
+import { useDb } from "../../hooks/useDb/useDb";
 
 function Cars() {
 	const [itemDetailed, setItemDetailed] = useState<ICar | null>(null);
-	const [year, setYear] = useState<string>("y90");
-	const [carList, setCarList] = useState<ICar[]>(
-		fullCarList[year as keyof typeof fullCarList]
-	);
+	const [collectionName, setCollectionName] = useState<string>("cars-wiki-90");
+	const [carList, setCarList] = useState<ICar[]>([]);
+	const { getAll } = useDb();
 
 	useEffect(() => {
-		setCarList(fullCarList[year as keyof typeof fullCarList]);
-	}, [year]);
+		getAll(collectionName).then((response) => setCarList(response));
+	}, [collectionName]);
 
 	useEffect(() => {
 		itemDetailed
@@ -21,9 +19,9 @@ function Cars() {
 			: (document.body.style.overflowY = "auto");
 	}, [itemDetailed]);
 
-	let listTitle = year
+	let listTitle = collectionName
 		.split("")
-		.filter((letter) => letter !== "y")
+		.filter((item) => item.match(/^\d+$/))
 		.join("");
 
 	const showDetails = (carId: string) => {
@@ -31,26 +29,15 @@ function Cars() {
 		setItemDetailed(item || null);
 	};
 
-	///////// For a while, I created this function to
-	///////// speed up transfering cars data from localDb to firebase collection
-
-	const updateDb = () => {
-		carList.forEach((item) => {
-			const { id, ...rest } = item;
-			console.log(`Added ${id}`);
-			useDb().addOne(rest as IAddCar, "cars-wiki-2000");
-		});
-	};
-
 	return (
 		<Container>
 			<YearSelector>
 				<span>Filtrar por ano</span>
-				<select onChange={(e) => setYear(e.target.value)}>
-					<option value={"y90"}>Anos 90</option>
-					<option value={"y80"}>Anos 80</option>
-					<option value={"y70"}>Anos 70</option>
-					<option value={"y2000"}>Anos 2000</option>
+				<select onChange={(e) => setCollectionName(e.target.value)}>
+					<option value={"cars-wiki-90"}>Anos 90</option>
+					<option value={"cars-wiki-80"}>Anos 80</option>
+					<option value={"cars-wiki-70"}>Anos 70</option>
+					<option value={"cars-wiki-2000"}>Anos 2000</option>
 				</select>
 			</YearSelector>
 			<Wrapper>
@@ -60,7 +47,7 @@ function Cars() {
 						<li
 							className="card__item"
 							key={item.id}
-							onClick={() => showDetails(item.id)}
+							onClick={() => item.id && showDetails(item.id)}
 						>
 							<img src={item.image_path} className="card__image" alt="" />
 							<span>{item.name}</span>
@@ -104,13 +91,6 @@ function Cars() {
 					)}
 				</div>
 			</Visualizer>
-			{/* //////// need to delete this button after update db */}
-			<button
-				style={{ backgroundColor: "firebrick", width: "100%" }}
-				onClick={() => updateDb()}
-			>
-				Update DB
-			</button>
 		</Container>
 	);
 }

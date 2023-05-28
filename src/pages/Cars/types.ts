@@ -1,5 +1,5 @@
 export interface ICar {
-	id: string;
+	id?: string;
 	name: string;
 	image_path: string;
 	power?: string;
