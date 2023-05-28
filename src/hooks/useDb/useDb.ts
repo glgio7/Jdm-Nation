@@ -1,5 +1,13 @@
 import { db } from "../../../services/db";
-import { collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+
+export interface IAddCar {
+	name: string;
+	image_path: string;
+	power: string;
+	vel_max: string;
+	zero_to100: string;
+}
 
 export const useDb = () => ({
 	getAll: async () => {
@@ -10,5 +18,8 @@ export const useDb = () => ({
 			return { id: id, ...data };
 		});
 		return carsList;
+	},
+	addOne: async (car: IAddCar, collectionName: string) => {
+		await addDoc(collection(db, collectionName), car);
 	},
 });

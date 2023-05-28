@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
 import fullCarList from "../../api/cars.json";
 import { ICar } from "./types";
+import { IAddCar, useDb } from "../../hooks/useDb/useDb";
 
 function Cars() {
 	const [itemDetailed, setItemDetailed] = useState<ICar | null>(null);
@@ -28,6 +29,17 @@ function Cars() {
 	const showDetails = (carId: string) => {
 		const item = carList.find((value: ICar) => value.id == carId);
 		setItemDetailed(item || null);
+	};
+
+	///////// For a while, I created this function to
+	///////// speed up transfering cars data from localDb to firebase collection
+
+	const updateDb = () => {
+		carList.forEach((item) => {
+			const { id, ...rest } = item;
+			console.log(`Added ${id}`);
+			useDb().addOne(rest as IAddCar, "cars-wiki-2000");
+		});
 	};
 
 	return (
@@ -92,6 +104,13 @@ function Cars() {
 					)}
 				</div>
 			</Visualizer>
+			{/* //////// need to delete this button after update db */}
+			<button
+				style={{ backgroundColor: "firebrick", width: "100%" }}
+				onClick={() => updateDb()}
+			>
+				Update DB
+			</button>
 		</Container>
 	);
 }
