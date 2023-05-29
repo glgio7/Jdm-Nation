@@ -1,6 +1,6 @@
 import { db } from "../../../services/db";
 import {
-	addDoc,
+	setDoc,
 	collection,
 	doc,
 	getDocs,
@@ -22,7 +22,10 @@ export const useDb = () => ({
 		return carsList as ICar[];
 	},
 	addOne: async (car: ICar, collectionName: string) => {
-		await addDoc(collection(db, collectionName), car);
+		const docRef = doc(collection(db, collectionName));
+		await setDoc(docRef, car);
+
+		return docRef;
 	},
 	updateOne: async (collectionName: string, carId: string, updatedData: {}) => {
 		const docRef = doc(db, collectionName, carId);

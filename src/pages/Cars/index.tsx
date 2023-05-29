@@ -35,14 +35,11 @@ function Cars() {
 			navigate("/login");
 			return;
 		}
-		setCarDetailed((prevState) => {
-			return { ...prevState!, modifiedBy: user!.displayName };
-		});
 
-		const { modifiedBy, power, vel_max, zero_to_100, id } = car;
+		const { power, vel_max, zero_to_100, id } = car;
 
 		await updateOne(collectionName, id!, {
-			modifiedBy: modifiedBy,
+			modifiedBy: user.displayName,
 			power: power || "",
 			vel_max: vel_max || "",
 			zero_to_100: zero_to_100 || "",

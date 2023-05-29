@@ -15,31 +15,40 @@ const Contribute = () => {
 
 	const [imageUrl, setImageUrl] = useState<string>("");
 	const [collectionName, setCollectionName] = useState<string>("");
+	const [documentId, setDocumentId] = useState<string>("");
 
 	const { addOne, uploadImage } = useDb();
 
 	const handleAddCar = async () => {
 		if (imageUrl && collectionName) {
 			setLoading(true);
-			addOne(
-				{
-					name: nome,
-					power: power,
-					vel_max: velMax,
-					zero_to_100: zeroTo100,
-					image_path: imageUrl,
-				},
-				collectionName
-			)
-				.then(() => {
-					setLoading(false);
-					alert("Video adicionado com sucesso!");
-				})
-				.catch((e) => {
-					setLoading(false);
-					setError("Error creating document:");
-					console.log(e);
-				});
+			if (!documentId) {
+				addOne(
+					{
+						name: nome,
+						power: power,
+						vel_max: velMax,
+						zero_to_100: zeroTo100,
+						image_path: imageUrl,
+					},
+					collectionName
+				)
+					.then((doc) => {
+						setLoading(false);
+						setDocumentId(doc.id);
+						alert("Video adicionado com sucesso!");
+					})
+					.catch((e) => {
+						setLoading(false);
+						setError("Error creating document:");
+						console.log(e);
+					});
+			} else {
+				setLoading(false);
+				alert(
+					"Carro já adicionado! Atualize a página para adicionar outro carro!"
+				);
+			}
 		}
 	};
 
