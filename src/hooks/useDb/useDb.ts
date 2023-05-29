@@ -7,6 +7,9 @@ import {
 	updateDoc,
 } from "firebase/firestore";
 import { ICar } from "../../pages/Cars/types";
+import { app } from "../../../services/config";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { UploadImageProps } from "./types";
 
 export const useDb = () => ({
 	getAll: async (collectionName: string) => {
@@ -27,5 +30,20 @@ export const useDb = () => ({
 		const updatedDoc = await updateDoc(docRef, updatedData);
 
 		return updatedDoc;
+	},
+
+	uploadImage: async ({ e, setImageUrl, setError }: UploadImageProps) => {
+		const file = e.target.files && e.target.files[0];
+		const storage = getStorage(app);
+		const storageRef = ref(storage, `images/${file!.name}`);
+
+		try {
+			await uploadBytes(storageRef, file!);
+			const downloadUrl = await getDownloadURL(storageRef);
+			setImageUrl(downloadUrl);
+		} catch (error) {
+			setError("Erro ao fazer upload!");
+			console.log("Error uploading image:", error);
+		}
 	},
 });
