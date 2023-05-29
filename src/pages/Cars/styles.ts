@@ -183,37 +183,29 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export const Visualizer = styled.div`
+export const Visualizer = styled.div<{ active: {} }>`
 	text-align: center;
+	display: flex;
+	position: relative;
+	align-items: center;
 
-	.info-visualizer {
-		display: flex;
-		position: relative;
-		align-items: center;
+	padding: 0 1rem;
 
-		padding: 0 1rem;
+	opacity: ${({ active }) => (active ? 1 : 0)};
+	pointer-events: ${({ active }) => (active ? "all" : "none")};
 
-		opacity: 0;
-		pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
 
-		position: fixed;
-		top: 0;
-		left: 0;
+	width: 100vw;
+	height: 100vh;
 
-		width: 100vw;
-		height: 100vh;
+	backdrop-filter: blur(9px);
 
-		backdrop-filter: blur(9px);
-		transition: all 200ms;
+	z-index: 9;
 
-		z-index: 9;
-	}
-
-	.info-visualizer.active {
-		pointer-events: all;
-		opacity: 1;
-	}
-	.info-visualizer__close {
+	.close-btn {
 		position: absolute;
 
 		cursor: pointer;
@@ -237,16 +229,16 @@ export const Visualizer = styled.div`
 		}
 	}
 
-	.info-visualizer img {
+	img {
 		border-radius: 10px 0 0 10px;
 
 		object-fit: cover;
 
 		height: 90vh;
-		max-width: 40%;
+		max-width: 50%;
 	}
 
-	.info-visualizer__details {
+	.details-list {
 		background-color: rgb(0, 0, 0, 0.85);
 
 		border-radius: 0 10px 10px 0;
@@ -255,7 +247,7 @@ export const Visualizer = styled.div`
 		width: 60%;
 	}
 
-	.info-visualizer__details li {
+	li {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -266,7 +258,7 @@ export const Visualizer = styled.div`
 		margin-top: 1rem;
 	}
 
-	.info-visualizer__details h2 {
+	h2 {
 		color: #fff;
 
 		&::first-letter {
@@ -274,20 +266,80 @@ export const Visualizer = styled.div`
 		}
 	}
 
-	.info-visualizer__details h3 {
+	h3 {
 		color: #ff0000;
 	}
 
-	@media screen and (max-width: 900px) {
-		.info-visualizer {
-			flex-direction: column;
+	input {
+		background-color: transparent;
 
-			padding: 0;
+		text-align: center;
+		font-size: 1rem;
 
-			overflow-y: auto;
+		outline: none;
+		caret-color: #ff0000;
+
+		border-radius: 4px;
+
+		&:focus {
+			outline: #ff0000 1px solid;
 		}
 
-		.info-visualizer img {
+		&::selection {
+			background-color: transparent;
+			color: #ff0000;
+		}
+	}
+
+	button {
+		cursor: pointer;
+	}
+
+	.edit-btn {
+		cursor: pointer;
+		margin-top: 0.25rem;
+	}
+
+	.update-btn {
+		background-color: firebrick;
+		color: #fff;
+
+		margin-top: 1rem;
+
+		border-radius: 4px;
+
+		padding: 9px 15px;
+
+		&:hover {
+			animation: colored infinite linear 0.5s forwards;
+		}
+
+		@keyframes colored {
+			0% {
+				background-color: firebrick;
+			}
+			50% {
+				background-color: #ff0000;
+			}
+			75% {
+				background-color: firebrick;
+			}
+		}
+	}
+
+	span {
+		margin-top: 1rem;
+		display: block;
+	}
+
+	@media screen and (max-width: 900px) {
+		flex-direction: column;
+
+		padding: 0;
+
+		overflow-y: auto;
+
+		img {
 			border-radius: 10px 10px 0 0;
 
 			object-fit: cover;
@@ -295,7 +347,7 @@ export const Visualizer = styled.div`
 			max-width: 100%;
 		}
 
-		.info-visualizer__details {
+		.details-list {
 			width: 100%;
 
 			padding-bottom: 1rem;

@@ -5,9 +5,11 @@ export const Wrapper = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	width: 100%;
-	height: 100%;
+	height: calc(100vh - 48px);
+	backdrop-filter: blur(6px);
 
 	@media screen and (max-width: 900px) {
+		height: 100%;
 		flex-direction: column;
 	}
 `;

@@ -1,23 +1,29 @@
 import { useEffect, useState } from "react";
 import { Container, YearSelector, Wrapper, Visualizer } from "./styles";
-import { ICar } from "./types";
+import { ICar, ICarDetailed } from "./types";
 import { useDb } from "../../hooks/useDb/useDb";
+import { RiEditFill } from "react-icons/ri";
+import { useAuth } from "../../hooks/useAuth/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Cars() {
-	const [itemDetailed, setItemDetailed] = useState<ICar | null>(null);
+	const [carDetailed, setCarDetailed] = useState<ICarDetailed | null>(null);
 	const [collectionName, setCollectionName] = useState<string>("cars-wiki-90");
 	const [carList, setCarList] = useState<ICar[]>([]);
-	const { getAll } = useDb();
+	const { getAll, updateOne } = useDb();
+	const { user } = useAuth();
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getAll(collectionName).then((response) => setCarList(response));
 	}, [collectionName]);
 
 	useEffect(() => {
-		itemDetailed
+		carDetailed
 			? (document.body.style.overflowY = "hidden")
 			: (document.body.style.overflowY = "auto");
-	}, [itemDetailed]);
+	}, [carDetailed]);
 
 	let listTitle = collectionName
 		.split("")
@@ -26,7 +32,28 @@ function Cars() {
 
 	const showDetails = (carId: string) => {
 		const item = carList.find((value: ICar) => value.id == carId);
-		setItemDetailed(item || null);
+		setCarDetailed(({ ...item, readonly: true } as ICarDetailed) || null);
+	};
+
+	const updateDetails = async (car: ICarDetailed) => {
+		if (!user) {
+			window.confirm("Login necessário para atualizar as informações");
+			navigate("/login");
+			return;
+		}
+		setCarDetailed((prevState) => {
+			return { ...prevState!, modifiedBy: user!.displayName! };
+		});
+
+		const { modifiedBy, power, vel_max, zero_to_100, id } = car;
+
+		await updateOne(collectionName, id!, {
+			modifiedBy: modifiedBy,
+			power: power || "",
+			vel_max: vel_max || "",
+			zero_to_100: zero_to_100 || "",
+		});
+		alert("Dados atualizados com sucesso!");
 	};
 
 	return (
@@ -55,42 +82,100 @@ function Cars() {
 					))}
 				</ul>
 			</Wrapper>
-			<Visualizer>
-				<div
-					className={
-						itemDetailed ? "info-visualizer active" : "info-visualizer"
-					}
-				>
-					{itemDetailed && (
-						<>
-							<button
-								className="info-visualizer__close"
-								onClick={() => setItemDetailed(null)}
-							>
-								Fechar
-							</button>
-							<img src={itemDetailed.image_path} alt="" />
-							<ul className="info-visualizer__details">
-								<li>
-									<h2>{itemDetailed.name}</h2>
-								</li>
-								<li>
-									<h3>Potência</h3>
-									<span>{itemDetailed.power}</span>
-								</li>
-								<li>
-									<h3>Velocidade Máxima</h3>
-									<span>{itemDetailed.velMax}</span>
-								</li>
-								<li>
-									<h3>0 a 100km/h</h3>
-									<span>{itemDetailed.t0to100}</span>
-								</li>
-							</ul>
-						</>
-					)}
-				</div>
-			</Visualizer>
+			{carDetailed && (
+				<Visualizer active={carDetailed}>
+					<button className="close-btn" onClick={() => setCarDetailed(null)}>
+						Fechar
+					</button>
+					<img src={carDetailed.image_path} alt="" />
+					<ul className="details-list">
+						<li>
+							<h2>{carDetailed.name}</h2>
+						</li>
+						<li>
+							<h3>Potência</h3>
+
+							<label htmlFor="power">
+								<RiEditFill
+									className="edit-btn"
+									onClick={() =>
+										setCarDetailed((item) => {
+											return { ...item!, readonly: !item!.readonly };
+										})
+									}
+								/>
+							</label>
+							<input
+								id="power"
+								value={carDetailed.power}
+								readOnly={carDetailed.readonly}
+								onChange={(e) =>
+									setCarDetailed((item) => {
+										return { ...item!, power: e.target.value };
+									})
+								}
+							/>
+						</li>
+						<li>
+							<h3>Velocidade Máxima</h3>
+							<label htmlFor="vel_max">
+								<RiEditFill
+									className="edit-btn"
+									onClick={() =>
+										setCarDetailed((item) => {
+											return { ...item!, readonly: !item!.readonly };
+										})
+									}
+								/>
+							</label>
+							<input
+								id="vel_max"
+								value={carDetailed.vel_max}
+								readOnly={carDetailed.readonly}
+								onChange={(e) =>
+									setCarDetailed((item) => {
+										return { ...item!, vel_max: e.target.value };
+									})
+								}
+							/>
+						</li>
+						<li>
+							<h3>0 a 100km/h</h3>
+							<label htmlFor="zero_to_100">
+								<RiEditFill
+									className="edit-btn"
+									onClick={() =>
+										setCarDetailed((item) => {
+											return { ...item!, readonly: !item!.readonly };
+										})
+									}
+								/>
+							</label>
+							<input
+								id="zero_to_100"
+								value={carDetailed.zero_to_100}
+								readOnly={carDetailed.readonly}
+								onChange={(e) =>
+									setCarDetailed((item) => {
+										return { ...item!, zero_to_100: e.target.value };
+									})
+								}
+							/>
+						</li>
+						<button
+							className="update-btn"
+							onClick={() => {
+								updateDetails(carDetailed);
+							}}
+						>
+							Atualizar
+						</button>
+						<span>{`Última modificação feita por @${
+							carDetailed.modifiedBy || "Admin"
+						}`}</span>
+					</ul>
+				</Visualizer>
+			)}
 		</Container>
 	);
 }

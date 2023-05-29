@@ -1,5 +1,11 @@
 import { db } from "../../../services/db";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+	addDoc,
+	collection,
+	doc,
+	getDocs,
+	updateDoc,
+} from "firebase/firestore";
 import { ICar } from "../../pages/Cars/types";
 
 export const useDb = () => ({
@@ -14,5 +20,12 @@ export const useDb = () => ({
 	},
 	addOne: async (car: ICar, collectionName: string) => {
 		await addDoc(collection(db, collectionName), car);
+	},
+	updateOne: async (collectionName: string, carId: string, updatedData: {}) => {
+		const docRef = doc(db, collectionName, carId);
+
+		const updatedDoc = await updateDoc(docRef, updatedData);
+
+		return updatedDoc;
 	},
 });
