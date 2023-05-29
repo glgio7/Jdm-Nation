@@ -28,12 +28,12 @@ function Home() {
 				<HomeCard
 					loginRequired={true}
 					background={"/img/data/pattern-3.png"}
-					title={"Contribuir"}
+					title={"Colaborador"}
 					description={
 						"Quer adicionar algum carro na Wiki? Adicionar algum video ou canal à nossa página de videos?"
 					}
-					href={"/"}
-					buttonSpan={"Entrar em contato"}
+					href={"/contribute"}
+					buttonSpan={"Contribuir"}
 				/>
 			</S.Wrapper>
 		</S.Home>

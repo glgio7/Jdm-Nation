@@ -5,25 +5,45 @@ export const FormContainer = styled.section`
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	min-width: 50vw;
-	background-color: #101010;
+	min-height: calc(100vh - 48px);
+
+	position: relative;
+	z-index: 5;
+
 	padding: 0 2rem 2rem 2rem;
 
-	border-radius: 10px;
+	.background {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		z-index: -1;
+
+		opacity: 0.05;
+
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-image: url("/img/data/cars-wallpaper.jpg");
+	}
 
 	form {
 		height: 100%;
-		width: 100%;
+		width: 50%;
 	}
 
 	h2 {
 		font-size: 1.5rem;
 		font-weight: bold;
 		text-align: center;
+		position: absolute;
+		top: 0;
 
 		cursor: default;
 
-		width: 100%;
+		width: 60%;
 
 		border-radius: 0 0 10px 10px;
 
@@ -31,6 +51,7 @@ export const FormContainer = styled.section`
 		color: rgba(120, 0, 0, 1);
 	}
 
+	select,
 	input {
 		padding: 0.5rem;
 		background-color: #252525;
@@ -131,6 +152,12 @@ export const FormContainer = styled.section`
 	}
 
 	@media screen and (max-width: 900px) {
-		width: 80vw;
+		min-height: calc(100vh - 180px);
+		h2 {
+			width: 90%;
+		}
+		form {
+			width: 80%;
+		}
 	}
 `;

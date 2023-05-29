@@ -4,7 +4,7 @@ export const Home = styled.main`
 	width: 100%;
 	min-height: calc(100vh - 48px);
 
-	background-color: rgba(120, 0, 0, 0.75);
+	background-color: #000;
 
 	background-image: url("/img/data/home-background.jpg");
 	background-position: center;

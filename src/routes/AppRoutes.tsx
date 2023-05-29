@@ -5,6 +5,7 @@ import Watch from "../pages/Watch";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import PrivateRoute from "./PrivateRoute";
+import Contribute from "../pages/Contribute";
 
 const AppRoutes = () => {
 	return (
@@ -16,6 +17,14 @@ const AppRoutes = () => {
 				element={
 					<PrivateRoute>
 						<Watch />
+					</PrivateRoute>
+				}
+			/>
+			<Route
+				path="/contribute"
+				element={
+					<PrivateRoute>
+						<Contribute />
 					</PrivateRoute>
 				}
 			/>
