@@ -5,15 +5,15 @@ import PopUp from "../../components/PopUp";
 import { useDb } from "../../hooks/useDb/useDb";
 
 const Contribute = () => {
-	const [nome, setNome] = useState("");
-	const [velMax, setVelMax] = useState("");
-	const [power, setPower] = useState("");
-	const [zeroTo100, setZeroTo100] = useState("");
+	const [nome, setNome] = useState<string>("");
+	const [velMax, setVelMax] = useState<string>("");
+	const [power, setPower] = useState<string>("");
+	const [zeroTo100, setZeroTo100] = useState<string>("");
 
 	const [loading, setLoading] = useState<boolean>(false);
-	const [error, setError] = useState("");
+	const [error, setError] = useState<string>("");
 
-	const [imageUrl, setImageUrl] = useState("");
+	const [imageUrl, setImageUrl] = useState<string>("");
 	const [collectionName, setCollectionName] = useState<string>("");
 
 	const { addOne, uploadImage } = useDb();
@@ -21,23 +21,25 @@ const Contribute = () => {
 	const handleAddCar = async () => {
 		if (imageUrl && collectionName) {
 			setLoading(true);
-			try {
-				addOne(
-					{
-						name: nome,
-						power: power,
-						vel_max: velMax,
-						zero_to_100: zeroTo100,
-						image_path: imageUrl,
-					},
-					collectionName
-				);
-				setLoading(false);
-			} catch (error) {
-				setLoading(false);
-				setError("Error creating document:");
-				console.log("Error creating document:", error);
-			}
+			addOne(
+				{
+					name: nome,
+					power: power,
+					vel_max: velMax,
+					zero_to_100: zeroTo100,
+					image_path: imageUrl,
+				},
+				collectionName
+			)
+				.then(() => {
+					setLoading(false);
+					alert("Video adicionado com sucesso!");
+				})
+				.catch((e) => {
+					setLoading(false);
+					setError("Error creating document:");
+					console.log(e);
+				});
 		}
 	};
 
