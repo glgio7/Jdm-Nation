@@ -17,21 +17,18 @@ export const useApi = () => ({
 		setError,
 	}: SignInProps): Promise<IUser | null> => {
 		setLoading(true);
-		try {
-			return signInWithEmailAndPassword(auth, email, password).then(
-				(userCredential) => {
-					setLoading(false);
-					return userCredential.user as IUser;
-				}
-			);
-		} catch (error: FirebaseError | any) {
-			setLoading(false);
-			const errorCode = error.code.split("/");
-			const errorMessage = errorCode[errorCode.length - 1];
-
-			setError(errorMessage);
-			return null;
-		}
+		return signInWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				setLoading(false);
+				return userCredential.user as IUser;
+			})
+			.catch((error: FirebaseError) => {
+				const errorCode = error.code.split("/");
+				const errorMessage = errorCode[errorCode.length - 1];
+				setLoading(false);
+				setError(errorMessage.toUpperCase());
+				return null;
+			});
 	},
 	signOut: async () => {
 		signOut(auth);

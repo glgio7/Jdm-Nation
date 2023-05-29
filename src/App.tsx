@@ -2,7 +2,6 @@ import Header from "./components/Header";
 import AppRoutes from "./routes/AppRoutes";
 import { GlobalCSS } from "./styles/GlobalCSS";
 import { BrowserRouter } from "react-router-dom";
-import { StyledContainer } from "./styles/App";
 
 const App = () => {
 	return (
@@ -10,9 +9,7 @@ const App = () => {
 			<GlobalCSS />
 			<BrowserRouter>
 				<Header />
-				<StyledContainer>
-					<AppRoutes />
-				</StyledContainer>
+				<AppRoutes />
 			</BrowserRouter>
 		</>
 	);

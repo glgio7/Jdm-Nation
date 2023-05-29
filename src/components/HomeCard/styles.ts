@@ -123,7 +123,7 @@ export const Card = styled.div<{ background: string }>`
 
 	@media screen and (max-width: 900px) {
 		margin-block: 1rem;
-		height: 50vh;
+		height: auto;
 		width: 80vw;
 
 		.button__link {

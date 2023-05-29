@@ -6,7 +6,9 @@ export const Container = styled.main`
 
 	background-image: url("/img/data/background-wiki.jpg");
 	background-size: cover;
-	background-position: center;
+	background-position: top;
+	background-attachment: fixed;
+
 	padding: 2rem 0;
 
 	display: flex;
@@ -183,7 +185,7 @@ export const Wrapper = styled.div`
 	}
 `;
 
-export const Visualizer = styled.div<{ active: {} }>`
+export const Visualizer = styled.div<{ active: {} | null }>`
 	text-align: center;
 	display: flex;
 	position: relative;
@@ -349,6 +351,7 @@ export const Visualizer = styled.div<{ active: {} }>`
 
 		.details-list {
 			width: 100%;
+			height: max-content;
 
 			padding-bottom: 1rem;
 

@@ -1,29 +1,25 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 
-export const StyledContainer = styled.main`
-	position: relative;
+// export const StyledContainer = styled.main`
+// 	position: relative;
 
-	width: 100%;
-	min-height: calc(100vh - 48px);
+// 	width: 100%;
+// 	min-height: calc(100vh - 48px);
 
-	background-image: url("/img/data/home-background.jpg");
-	background-size: cover;
-	background-position: center;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+// 	img {
+// 		width: 100%;
+// 	}
 
-	img {
-		width: 100%;
-	}
+// 	@media screen and (max-width: 900px) {
+// 		justify-content: flex-start;
+// 		min-height: calc(100vh - 180px);
+// 		/* padding: 2rem 0; */
 
-	@media screen and (max-width: 900px) {
-		justify-content: flex-start;
-		min-height: calc(100vh - 180px);
-		padding: 2rem 0;
-
-		background-position: right;
-	}
-`;
+// 		background-position: right;
+// 	}
+// `;

@@ -19,12 +19,6 @@ function Cars() {
 		getAll(collectionName).then((response) => setCarList(response));
 	}, [collectionName]);
 
-	useEffect(() => {
-		carDetailed
-			? (document.body.style.overflowY = "hidden")
-			: (document.body.style.overflowY = "auto");
-	}, [carDetailed]);
-
 	let listTitle = collectionName
 		.split("")
 		.filter((item) => item.match(/^\d+$/))
@@ -42,7 +36,7 @@ function Cars() {
 			return;
 		}
 		setCarDetailed((prevState) => {
-			return { ...prevState!, modifiedBy: user!.displayName! };
+			return { ...prevState!, modifiedBy: user!.displayName };
 		});
 
 		const { modifiedBy, power, vel_max, zero_to_100, id } = car;
